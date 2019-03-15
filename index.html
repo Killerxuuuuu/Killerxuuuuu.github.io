@@ -156,13 +156,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-hongyanchuanshu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/15/hongyanchuanshu/">题解 P2112 【鸿雁传书】</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/15/hongyanchuanshu/" class="archive-article-date">
+  	<time datetime="2019-03-15T13:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>$x+1$</p>
-
+        <p>既然不能把情书中的单词拆开，那么每个单词就是独立的，我们只要去探究每个单词的长度，换行我们直接理解为分段就可以了。</p>
+<p>于是题意其实就是给出一个有$n$个数的数列，将这个数列分成$k$段，使每一段所有数的总和方差最小。</p>
+<p>这道题我们考虑dp，显然我们的子问题就是把前$i$个数分成$j$段，每一段所有数的总和方差最小，状态应由$i$前面所有的数分成$j-1$段的最好结果转移过来。</p>
+<p>可以写出转移方程了：</p>
+<p>设$f[i][j]$表示前$i$个数分成$j$段，最小的每一段所有数总和的方差。</p>
+<p>$f[i][j]=min(f[i][j],f[l][j-1]+sum(i,l))$</p>
+<p>其中$1≤l≤i-1$,$sum(i,l)$表示从$i$到$l$这一段数的和减去平均数的平方再除以$k$，实际操作时可以用前缀和。答案最后在$f[n][k]$里。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXK 105</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,k;</span><br><span class="line"><span class="keyword">double</span> a[MAXN],f[MAXN][MAXK];<span class="comment">//a[i]表示第i个单词的长度 </span></span><br><span class="line"><span class="keyword">double</span> s[MAXN];<span class="comment">//s是前缀和数组 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="keyword">double</span> ave=<span class="number">0</span>;<span class="comment">//记录平均数 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">char</span> str[<span class="number">25</span>];</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str);<span class="comment">//读入单词（全是x） </span></span><br><span class="line">		a[i]=<span class="built_in">strlen</span>(str);<span class="comment">//记录单词长度 </span></span><br><span class="line">		ave+=a[i];<span class="comment">//累加起来好算平均数 </span></span><br><span class="line">		s[i]=s[i<span class="number">-1</span>]+a[i];<span class="comment">//计算前缀和 </span></span><br><span class="line">	&#125;</span><br><span class="line">	ave/=k;<span class="comment">//算出平均数</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=k;j++)</span><br><span class="line">	  f[i][j]=<span class="number">0x7fffffff</span>;<span class="comment">//除了第一列，其他地方都初始化成最大值 </span></span><br><span class="line">	  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) f[i][<span class="number">1</span>]=(s[i]-ave)*(s[i]-ave)/k;<span class="comment">//分成一段的最小值直接计算出方差就行了 </span></span><br><span class="line">	  </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=k;j++)<span class="comment">//分成一段不用处理了，直接从分成两段开始处理 </span></span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">int</span> i=j;i&lt;=n;i++)<span class="comment">//前面i个数最多也只能分成i段，所以如果j&gt;i就不行 </span></span><br><span class="line">	  <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>;l&lt;=i<span class="number">-1</span>;l++) </span><br><span class="line">	   f[i][j]=min(f[i][j],f[l][j<span class="number">-1</span>]+(s[i]-s[l]-ave)*(s[i]-s[l]-ave)/k);<span class="comment">//转移方程 </span></span><br><span class="line">	   </span><br><span class="line">	    <span class="built_in">printf</span>(<span class="string">"%.1lf"</span>,f[n][k]);<span class="comment">//输出即可 </span></span><br><span class="line">	  </span><br><span class="line">	   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -170,11 +191,33 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/默认分类//" class="article-tag-list-link color5">默认分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/15/test/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/15/hongyanchuanshu/">展开全文 >></a>
         </p>
       
 
@@ -424,6 +467,10 @@ MathJax.Hub.Queue(function() {
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">枚举</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -579,5 +626,20 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
