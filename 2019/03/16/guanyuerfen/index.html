@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="KillerXu的博客">
 <meta property="og:description" content="首先看几道比较经典的二分题。 1、木材厂有一些原木，现在想把这些木头切割成一些长度相同的小段木头（木头有可能有剩余），需要得到的小段的数目是给定的。当然，我们希望得到的小段木头越长越好，你的任务是计算能够得到的小段木头的最大长度。木头长度的单位是cm。原木的长度都是正整数，我们要求切割得到的小段木头的长度也是正整数。 2、陶陶是个贪玩的孩子，他在地上丢了A个瓶盖，为了简化问题，我们可以当作这A个瓶">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-16T09:22:32.494Z">
+<meta property="og:updated_time" content="2019-03-16T12:55:47.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二分的用处">
 <meta name="twitter:description" content="首先看几道比较经典的二分题。 1、木材厂有一些原木，现在想把这些木头切割成一些长度相同的小段木头（木头有可能有剩余），需要得到的小段的数目是给定的。当然，我们希望得到的小段木头越长越好，你的任务是计算能够得到的小段木头的最大长度。木头长度的单位是cm。原木的长度都是正整数，我们要求切割得到的小段木头的长度也是正整数。 2、陶陶是个贪玩的孩子，他在地上丢了A个瓶盖，为了简化问题，我们可以当作这A个瓶">
@@ -193,7 +193,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(l&lt;=r)</span><br><span class="line">    &#123;</span><br><span class="line">        mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(check(mid)) l=mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> r=mid<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>check函数其实就是我们上面所说的枚举方法中看看我照着这个长度(mid)切，切的数量是不是我需要的，相应缩小范围。</p>
 <p>二分其实很多时候并不会直接拿出来考，而是隐藏在题目中。</p>
-<p>比如最长不下降子序列，$O(n^2)$做法很好写，但是在数据丧心病狂的情况下还是太慢了，这个时候用二分优化就很必要了，我们可以用<strong>二分</strong>去查找你要怎样继承，而不是一个一个去枚举。</p>
+<p>比如最长公共子序列，$O(n^2)$做法很好写，但是在数据丧心病狂的情况下还是太慢了，这个时候用二分优化就很必要了，我们可以用<strong>二分</strong>去查找你要怎样继承，而不是一个一个去枚举。</p>
 <p><a href="https://www.luogu.org/problemnew/show/P1020" target="_blank" rel="noopener">洛谷 P1020 导弹拦截</a></p>
 
       
@@ -715,20 +715,5 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
