@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>洛谷 P1197 [JSOI2008]星球大战 代码 | KillerXu的博客</title>
+  <title>洛谷 P4158 [SCOI2009]粉刷匠 代码 | KillerXu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这道题很有意思，首先我很容易看出来这道题是个并查集，但是砸点却难住了我。 于是翻题解，果然dalao们用巧妙的方法解决了，既然砸不行我就装回去还不行吗？ 于是豁然开朗。 无向边正常地用邻接表存储即可。先模拟一开始的状况，然后再一个个点装回去判断就行了。 1234567891011121314151617181920212223242526272829303132333435363738394041">
-<meta name="keywords" content="各省省选,并查集,江苏,2008,图论">
+  <meta name="description" content="数据范围不大，直接暴力dp即可。 1234567891011121314151617181920212223242526272829303132333435363738394041#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;lt;cstring&amp;gt;#include&amp;lt;algorithm&amp;gt;#define N 55usin">
+<meta name="keywords" content="动态规划,各省省选,2009,四川">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷 P1197 [JSOI2008]星球大战 代码">
-<meta property="og:url" content="http://yoursite.com/2019/03/16/xingqiudazhan/index.html">
+<meta property="og:title" content="洛谷 P4158 [SCOI2009]粉刷匠 代码">
+<meta property="og:url" content="http://yoursite.com/2019/03/17/fenshuajiang/index.html">
 <meta property="og:site_name" content="KillerXu的博客">
-<meta property="og:description" content="这道题很有意思，首先我很容易看出来这道题是个并查集，但是砸点却难住了我。 于是翻题解，果然dalao们用巧妙的方法解决了，既然砸不行我就装回去还不行吗？ 于是豁然开朗。 无向边正常地用邻接表存储即可。先模拟一开始的状况，然后再一个个点装回去判断就行了。 1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta property="og:description" content="数据范围不大，直接暴力dp即可。 1234567891011121314151617181920212223242526272829303132333435363738394041#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;lt;cstring&amp;gt;#include&amp;lt;algorithm&amp;gt;#define N 55usin">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-16T13:38:17.147Z">
+<meta property="og:updated_time" content="2019-03-17T02:47:22.203Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="洛谷 P1197 [JSOI2008]星球大战 代码">
-<meta name="twitter:description" content="这道题很有意思，首先我很容易看出来这道题是个并查集，但是砸点却难住了我。 于是翻题解，果然dalao们用巧妙的方法解决了，既然砸不行我就装回去还不行吗？ 于是豁然开朗。 无向边正常地用邻接表存储即可。先模拟一开始的状况，然后再一个个点装回去判断就行了。 1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta name="twitter:title" content="洛谷 P4158 [SCOI2009]粉刷匠 代码">
+<meta name="twitter:description" content="数据范围不大，直接暴力dp即可。 1234567891011121314151617181920212223242526272829303132333435363738394041#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;lt;cstring&amp;gt;#include&amp;lt;algorithm&amp;gt;#define N 55usin">
   
     <link rel="alternative" href="/atom.xml" title="KillerXu的博客" type="application/atom+xml">
   
@@ -153,31 +153,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-xingqiudazhan" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-fenshuajiang" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      洛谷 P1197 [JSOI2008]星球大战 代码
+      洛谷 P4158 [SCOI2009]粉刷匠 代码
     </h1>
   
 
         
-        <a href="/2019/03/16/xingqiudazhan/" class="archive-article-date">
-  	<time datetime="2019-03-16T13:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
+        <a href="/2019/03/17/fenshuajiang/" class="archive-article-date">
+  	<time datetime="2019-03-17T02:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这道题很有意思，首先我很容易看出来这道题是个并查集，但是砸点却难住了我。</p>
-<p>于是翻题解，果然dalao们用巧妙的方法解决了，既然砸不行我就装回去还不行吗？</p>
-<p>于是豁然开朗。</p>
-<p>无向边正常地用邻接表存储即可。先模拟一开始的状况，然后再一个个点装回去判断就行了。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 400005</span></span><br><span class="line"><span class="keyword">int</span> k,n,m,head[N],b[N],ans[N],fa[N],tot;</span><br><span class="line"><span class="keyword">bool</span> broken[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> next,to,from;</span><br><span class="line">&#125;g[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	g[++tot].from=u;</span><br><span class="line">	g[tot].next=head[u];</span><br><span class="line">	head[u]=tot;</span><br><span class="line">	g[tot].to=v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">father</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(fa[x]==x) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">return</span> fa[x]=father(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">unionn</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	u=father(u);</span><br><span class="line">	v=father(v);</span><br><span class="line">	<span class="keyword">if</span>(u!=v) fa[v]=u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++) fa[i]=i,head[i]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);</span><br><span class="line">		add(u,v);</span><br><span class="line">		add(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b[i]);</span><br><span class="line">		broken[b[i]]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> total=n-k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>*m;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!broken[g[i].from] &amp;&amp; !broken[g[i].to] &amp;&amp; father(g[i].from)!=father(g[i].to))&#123;</span><br><span class="line">			total--;</span><br><span class="line">			unionn(g[i].from,g[i].to);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	ans[k+<span class="number">1</span>]=total;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=k;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">		total++;</span><br><span class="line">		broken[b[i]]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=head[b[i]];j!=<span class="number">-1</span>;j=g[j].next)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!broken[g[j].to] &amp;&amp; father(b[i])!=father(g[j].to))&#123;</span><br><span class="line">				total--;</span><br><span class="line">				unionn(b[i],g[j].to);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		ans[i]=total;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k+<span class="number">1</span>;i++) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>数据范围不大，直接暴力dp即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 55</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> f[N][N][N*N][<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> n,m,t;</span><br><span class="line"><span class="keyword">int</span> a[N][N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;t;</span><br><span class="line">    <span class="keyword">char</span> s[N];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) a[i][j]=s[j<span class="number">-1</span>]-<span class="string">'0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=t;k++)&#123;</span><br><span class="line">      	<span class="keyword">if</span>(j==<span class="number">1</span>)&#123;</span><br><span class="line">      		f[i][j][k][<span class="number">0</span>]=max(f[i<span class="number">-1</span>][m][k<span class="number">-1</span>][<span class="number">0</span>],f[i<span class="number">-1</span>][m][k<span class="number">-1</span>][<span class="number">1</span>]);</span><br><span class="line">      		f[i][j][k][<span class="number">1</span>]=max(f[i<span class="number">-1</span>][m][k<span class="number">-1</span>][<span class="number">0</span>],f[i<span class="number">-1</span>][m][k<span class="number">-1</span>][<span class="number">1</span>])+<span class="number">1</span>;</span><br><span class="line">      	&#125;</span><br><span class="line">      	<span class="keyword">else</span></span><br><span class="line">      	&#123;</span><br><span class="line">      		<span class="keyword">if</span>(a[i][j]==a[i][j<span class="number">-1</span>])&#123;</span><br><span class="line">      			f[i][j][k][<span class="number">0</span>]=f[i][j<span class="number">-1</span>][k][<span class="number">0</span>];</span><br><span class="line">      			f[i][j][k][<span class="number">1</span>]=f[i][j<span class="number">-1</span>][k][<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">      		&#125;</span><br><span class="line">      		<span class="keyword">else</span>&#123;</span><br><span class="line">      			f[i][j][k][<span class="number">0</span>]=max(f[i][j<span class="number">-1</span>][k][<span class="number">1</span>],f[i][j<span class="number">-1</span>][k<span class="number">-1</span>][<span class="number">0</span>]);</span><br><span class="line">      			f[i][j][k][<span class="number">1</span>]=max(f[i][j<span class="number">-1</span>][k<span class="number">-1</span>][<span class="number">1</span>]+<span class="number">1</span>,f[i][j<span class="number">-1</span>][k][<span class="number">0</span>]+<span class="number">1</span>);</span><br><span class="line">      		&#125;</span><br><span class="line">      	&#125;</span><br><span class="line">      	ans=max(ans,max(f[i][j][k][<span class="number">0</span>],f[i][j][k][<span class="number">1</span>]));</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -216,23 +213,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">各省省选</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">并查集</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2009</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">江苏</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2008</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">四川</a>
         		</li>
       		
 		</ul>
@@ -299,7 +292,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/16/xingqiudazhan/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/17/fenshuajiang/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -313,18 +306,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/17/fenshuajiang/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          洛谷 P4158 [SCOI2009]粉刷匠 代码
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/03/16/shiwulian/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">洛谷 P2024 [NOI2001]食物链 代码</div>
+    <a href="/2019/03/16/xingqiudazhan/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">洛谷 P1197 [JSOI2008]星球大战 代码</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -365,7 +349,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="xingqiudazhan" data-title="洛谷 P1197 [JSOI2008]星球大战 代码" data-url="http://yoursite.com/2019/03/16/xingqiudazhan/"></div>
+	<div class="ds-thread" data-thread-key="fenshuajiang" data-title="洛谷 P4158 [SCOI2009]粉刷匠 代码" data-url="http://yoursite.com/2019/03/17/fenshuajiang/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -388,8 +372,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2019/03/16/xingqiudazhan/", 
-    sourceId: "xingqiudazhan",
+    url: "http://yoursite.com/2019/03/17/fenshuajiang/", 
+    sourceId: "fenshuajiang",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -398,7 +382,7 @@
   
 
   
-  <div id="SOHUCS" sid="xingqiudazhan"></div> 
+  <div id="SOHUCS" sid="fenshuajiang"></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
 <script type="text/javascript">
     window.changyan.api.config({
