@@ -43,13 +43,13 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://s2.ax1x.com/2019/03/15/AVVXY4.jpg" class="js-avatar">
+			<img src="https://s2.ax1x.com/2019/07/21/e9vRAI.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">KillerXu</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">This is a blog that has many incredible(boring) articles</p>
+		<p class="header-subtitle">Time for a true display of skill</p>
 		
 
 		<nav class="header-menu">
@@ -103,13 +103,13 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://s2.ax1x.com/2019/03/15/AVVXY4.jpg" class="js-avatar">
+				<img src="https://s2.ax1x.com/2019/07/21/e9vRAI.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">KillerXu</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>This is a blog that has many incredible(boring) articles<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Time for a true display of skill<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -155,6 +155,91 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-tiehaibao" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/05/tiehaibao/">洛谷 P3740 [HAOI2014]贴海报 代码</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/05/tiehaibao/" class="archive-article-date">
+  	<time datetime="2019-04-05T13:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不是很难，就当复习一下线段树了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10000005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1005</span>],b[<span class="number">1005</span>];</span><br><span class="line"><span class="keyword">bool</span> c[N&lt;&lt;<span class="number">2</span>],flag;</span><br><span class="line"><span class="keyword">int</span> n,m,ans;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ls</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123; <span class="keyword">return</span> p&lt;&lt;<span class="number">1</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">rs</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123; <span class="keyword">return</span> p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;c[p]=c[ls(p)]&amp;&amp;c[rs(p)];&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> p,<span class="keyword">int</span> nl,<span class="keyword">int</span> nr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(c[p]) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=nl &amp;&amp; r&lt;=nr)&#123;</span><br><span class="line">        flag=<span class="number">1</span>;</span><br><span class="line">        c[p]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(nl&lt;=mid) work(l,mid,ls(p),nl,nr);</span><br><span class="line">    <span class="keyword">if</span>(nr&gt;mid) work(mid+<span class="number">1</span>,r,rs(p),nl,nr);</span><br><span class="line">    pushup(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    build(ls(p),l,mid);</span><br><span class="line">    build(rs(p),mid+<span class="number">1</span>,r);</span><br><span class="line">    pushup(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">cin</span>&gt;&gt;a[i]&gt;&gt;b[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=m;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">        flag=<span class="number">0</span>;</span><br><span class="line">        work(<span class="number">1</span>,n,<span class="number">1</span>,a[i],b[i]);</span><br><span class="line">        <span class="keyword">if</span>(flag) ans++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/代码//" class="article-tag-list-link color3">代码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/05/tiehaibao/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-tongwangaogeruimadedaolu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -988,112 +1073,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/03/16/shiwulian/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-guanyuerfen" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/16/guanyuerfen/">二分的用处</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/16/guanyuerfen/" class="archive-article-date">
-  	<time datetime="2019-03-16T08:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先看几道比较经典的二分题。</p>
-<p>1、木材厂有一些原木，现在想把这些木头切割成一些长度相同的小段木头（木头有可能有剩余），需要得到的小段的数目是给定的。当然，我们希望得到的小段木头越长越好，你的任务是计算能够得到的小段木头的最大长度。木头长度的单位是cm。原木的长度都是正整数，我们要求切割得到的小段木头的长度也是正整数。</p>
-<p>2、陶陶是个贪玩的孩子，他在地上丢了A个瓶盖，为了简化问题，我们可以当作这A个瓶盖丢在一条直线上，现在他想从这些瓶盖里找出B个，使得距离最近的2个距离最大，他想知道，最大可以到多少呢？</p>
-<p>3、一年一度的“跳石头”比赛又要开始了!这项比赛将在一条笔直的河道中进行，河道中分布着一些巨大岩石。组委会已经选择好了两块岩石作为比赛起点和终点。在起点和终点之间，有 $N$ 块岩石（不含起点和终点的岩石）。在比赛过程中，选手们将从起点出发，每一步跳向相邻的岩石，直至到达终点。为了提高比赛难度，组委会计划移走一些岩石，使得选手们在比赛过程中的最短跳跃距离尽可能长。由于预算限制，组委会至多从起点和终点之间移走 $M$ 块岩石（不能移走起点和终点的岩石）。</p>
-<p>他们都提到了类似于</p>
-<ul>
-<li><p>最小的最大</p>
-</li>
-<li><p>最近的最远</p>
-</li>
-<li><p>最短的最长</p>
-</li>
-</ul>
-<p>这样的词。</p>
-<p>在没有学二分前，我们可能会想到我去枚举一个值，通过这个值我看看能不能使条件成立。比如第一题，我枚举出最小的木头长度，接下来我就照着这个长度切，如果我切的数量不是我需要的，那么我就可以继续枚举，直到找到需要的为止。</p>
-<p>很显然这样的时间复杂度是很高的，引入二分就显得十分必要。</p>
-<p>就像很多教科书上举的猜数的例子，我每一次只要确定一个只有上一个区间一半大的区间，一步步得到我需要的答案就行了。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(l&lt;=r)</span><br><span class="line">    &#123;</span><br><span class="line">        mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(check(mid)) l=mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> r=mid<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>check函数其实就是我们上面所说的枚举方法中看看我照着这个长度(mid)切，切的数量是不是我需要的，相应缩小范围。</p>
-<p>二分其实很多时候并不会直接拿出来考，而是隐藏在题目中。</p>
-<p>比如最长公共子序列，$O(n^2)$做法很好写，但是在数据丧心病狂的情况下还是太慢了，这个时候用二分优化就很必要了，我们可以用<strong>二分</strong>去查找你要怎样继承，而不是一个一个去枚举。</p>
-<p>可以拿这一题来练一练二分：<a href="https://www.luogu.org/problemnew/show/P1020" target="_blank" rel="noopener">洛谷 P1020 导弹拦截</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二分答案</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/16/guanyuerfen/">展开全文 >></a>
         </p>
       
 
