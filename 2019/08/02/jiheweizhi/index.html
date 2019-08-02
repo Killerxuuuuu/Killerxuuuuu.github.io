@@ -12,11 +12,11 @@
 <meta name="keywords" content="最短路,SPFA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷 P1491 集合位置 题解">
-<meta property="og:url" content="http://yoursite.com/2019/03/19/jiheweizhi/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/02/jiheweizhi/index.html">
 <meta property="og:site_name" content="KillerXu的博客">
 <meta property="og:description" content="题目链接 在洛谷上AC的第500道题。 做法类似NOIP2018 d2 t1，求出最短路径后暴力删边，简单思考即可得，不走最短路径的边，最后总路程一定大于等于总路程。 思考记录路径，如果做过类似记录路径的题目，可以想到开一个数组$pre[i]$记录前驱，最后从n往前推即可推出路径。 看数据范围发现SPFA不会死亡，所以为了省事就直接打个SPFA，当然目测Dijkstra也没有问题。 剩下的就看代码">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-02T13:45:17.289Z">
+<meta property="og:updated_time" content="2019-08-02T13:59:05.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷 P1491 集合位置 题解">
 <meta name="twitter:description" content="题目链接 在洛谷上AC的第500道题。 做法类似NOIP2018 d2 t1，求出最短路径后暴力删边，简单思考即可得，不走最短路径的边，最后总路程一定大于等于总路程。 思考记录路径，如果做过类似记录路径的题目，可以想到开一个数组$pre[i]$记录前驱，最后从n往前推即可推出路径。 看数据范围发现SPFA不会死亡，所以为了省事就直接打个SPFA，当然目测Dijkstra也没有问题。 剩下的就看代码">
@@ -171,8 +171,8 @@
   
 
         
-        <a href="/2019/03/19/jiheweizhi/" class="archive-article-date">
-  	<time datetime="2019-03-19T14:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
+        <a href="/2019/08/02/jiheweizhi/" class="archive-article-date">
+  	<time datetime="2019-08-02T13:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
 </a>
         
       </header>
@@ -295,7 +295,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/19/jiheweizhi/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/02/jiheweizhi/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -309,18 +309,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/19/feibonaqishulie/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          洛谷 P1962 斐波那契数列 代码
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/03/18/zuichanggonggongzixulie/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">洛谷 P1439 【模板】最长公共子序列 代码</div>
+    <a href="/2019/07/23/mucai/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">洛谷 P4058 [Code+#1]木材 题解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -361,7 +352,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="jiheweizhi" data-title="洛谷 P1491 集合位置 题解" data-url="http://yoursite.com/2019/03/19/jiheweizhi/"></div>
+	<div class="ds-thread" data-thread-key="jiheweizhi" data-title="洛谷 P1491 集合位置 题解" data-url="http://yoursite.com/2019/08/02/jiheweizhi/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -384,7 +375,7 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2019/03/19/jiheweizhi/", 
+    url: "http://yoursite.com/2019/08/02/jiheweizhi/", 
     sourceId: "jiheweizhi",
     productKey: "true",
     target: "cloud-tie-wrapper"
@@ -858,5 +849,20 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
