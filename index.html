@@ -288,7 +288,7 @@
 <p>大致题意：从$n$个不同的元素中重复取出$m$个元素，问取法个数。</p>
 <p>设第$i$个元素选了$x_i$个，则方程</p>
 <script type="math/tex; mode=display">\sum_{i=1}^n x_i=m</script><p>的非负整数解，就是答案。</p>
-<p>于是可以理解为将$m$个$1$排成一排，插入$n-1$个分隔符即分成$n$段，各分段的$1$的个数就是方程的一个解，而插入分隔符的过程，实质就是从<br>$n+m-1$个位置中选择$n-1$个位置放分隔符，其余$m$个位置放$1$，于是方案数有$C^{n-1}<em>{n+m-1}=C^m</em>{n+m-1}$种。</p>
+<p>于是可以理解为将$m$个$1$排成一排，插入$n-1$个分隔符即分成$n$段，各分段的$1$的个数就是方程的一个解，而插入分隔符的过程，实质就是从<br>$n+m-1$个位置中选择$n-1$个位置放分隔符，其余$m$个位置放$1$，于是方案数有$C(n+m-1,n-1)=C(n+m-1,m)$种。（组合数公式好看的版本写炸了，凑合着看吧）</p>
 <p>最后对答案取模$p$即可。</p>
 <p>然后你就爆炸了。组合数可不好算。</p>
 <p>数据那么大，肯定要用写毒瘤手段优化了，因为$p$是质数，写个$Lucas$定理就行了。</p>
@@ -1617,20 +1617,5 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
