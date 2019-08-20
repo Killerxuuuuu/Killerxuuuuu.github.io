@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 山东 | KillerXu的博客</title>
+  <title>P1380 T型骨牌 题解 | KillerXu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="KillerXu的博客">
-<meta property="og:url" content="http://yoursite.com/tags/山东/index.html">
+  <meta name="description" content="非常非常恶心的一道题，最好的做法是花很短的时间写一个很暴力的搜索，把所有的答案都打表出来，因为这道题似乎没有很正确且时间优秀的剪枝方法。 但是平时练习我们可以尝试一些不太严谨的剪枝。 这道题不考虑剪枝还是很好写的，放完一个后就搜索下一个能放的点，维护最大值就行。$n$或$m$小于$3$特判输出$0$。 然而会T 4个点。于是我开始尝试各种玄学的剪枝，最终发现只有这个方法可以AC： 用$f[i][j">
+<meta name="keywords" content="dfs;深度优先搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P1380 T型骨牌 题解">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/Txinggupai/index.html">
 <meta property="og:site_name" content="KillerXu的博客">
+<meta property="og:description" content="非常非常恶心的一道题，最好的做法是花很短的时间写一个很暴力的搜索，把所有的答案都打表出来，因为这道题似乎没有很正确且时间优秀的剪枝方法。 但是平时练习我们可以尝试一些不太严谨的剪枝。 这道题不考虑剪枝还是很好写的，放完一个后就搜索下一个能放的点，维护最大值就行。$n$或$m$小于$3$特判输出$0$。 然而会T 4个点。于是我开始尝试各种玄学的剪枝，最终发现只有这个方法可以AC： 用$f[i][j">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-20T10:49:45.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KillerXu的博客">
+<meta name="twitter:title" content="P1380 T型骨牌 题解">
+<meta name="twitter:description" content="非常非常恶心的一道题，最好的做法是花很短的时间写一个很暴力的搜索，把所有的答案都打表出来，因为这道题似乎没有很正确且时间优秀的剪枝方法。 但是平时练习我们可以尝试一些不太严谨的剪枝。 这道题不考虑剪枝还是很好写的，放完一个后就搜索下一个能放的点，维护最大值就行。$n$或$m$小于$3$特判输出$0$。 然而会T 4个点。于是我开始尝试各种玄学的剪枝，最终发现只有这个方法可以AC： 用$f[i][j">
   
     <link rel="alternative" href="/atom.xml" title="KillerXu的博客" type="application/atom+xml">
   
@@ -154,83 +159,242 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Txinggupai" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/16/ditufuyuan/" class="archive-article-date">
-  	<time datetime="2019-03-16T05:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/16/ditufuyuan/">洛谷 P2407 [SDOI2009]地图复原 代码</a>
+    <h1 class="article-title" itemprop="name">
+      P1380 T型骨牌 题解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/20/Txinggupai/" class="archive-article-date">
+  	<time datetime="2019-08-20T10:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>非常非常恶心的一道题，最好的做法是花很短的时间写一个很暴力的搜索，把所有的答案都打表出来，因为这道题似乎没有很正确且时间优秀的剪枝方法。</p>
+<p>但是平时练习我们可以尝试一些不太严谨的剪枝。</p>
+<p>这道题不考虑剪枝还是很好写的，放完一个后就搜索下一个能放的点，维护最大值就行。$n$或$m$小于$3$特判输出$0$。</p>
+<p>然而会T 4个点。于是我开始尝试各种玄学的剪枝，最终发现只有这个方法可以AC：</p>
+<p>用$f[i][j]$记录到$(i,j)$这个位置最多能放多少，如果$step+1&lt;f[i][j]$就直接返回，但其实这个方法是存在一点问题的，所以会WA掉一个点，所以我们就再退一步，写成$step+2&lt;f[i][j]$。</p>
+<p>代码看着很长，但搜索那一段写完一个if可以复制粘贴，再改一改下标就可以了。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 15</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n , m;</span><br><span class="line"><span class="keyword">int</span> vis[N][N] , f[N][N];</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> , <span class="keyword">int</span> , <span class="keyword">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span>)</span></span>;</span><br><span class="line">			</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">if</span>(n &lt; <span class="number">3</span>|| m &lt; <span class="number">3</span>)&#123;<span class="built_in">cout</span> &lt;&lt; <span class="number">0</span>; <span class="keyword">return</span> <span class="number">0</span>;&#125;<span class="comment">//特判</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;</span><br><span class="line">	 	<span class="built_in">memset</span>(vis , <span class="number">0</span> , <span class="keyword">sizeof</span>(vis));<span class="comment">//初始化</span></span><br><span class="line">	 	<span class="built_in">memset</span>(f , <span class="number">0</span> , <span class="keyword">sizeof</span>(f));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x = <span class="number">1</span>; x &lt;= n; x++) vis[x][<span class="number">0</span>] = vis[x][m + <span class="number">1</span>] = <span class="number">1</span>;<span class="comment">//把外面一圈都设为不能走，省的越界判断</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x = <span class="number">1</span>; x &lt;= m; x++) vis[<span class="number">0</span>][x] = vis[n + <span class="number">1</span>][x] = <span class="number">1</span>;</span><br><span class="line">	  	dfs(i , j , <span class="number">0</span>);</span><br><span class="line">	  &#125;</span><br><span class="line">	  </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span> , ans);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> y , <span class="keyword">int</span> step)</span></span>&#123;</span><br><span class="line">	<span class="comment">//cout &lt;&lt; x &lt;&lt; " " &lt;&lt; y &lt;&lt; " " &lt;&lt; step &lt;&lt; "\n";</span></span><br><span class="line">	<span class="keyword">if</span>(ans &lt; step) ans = step;<span class="comment">//更新答案</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= <span class="number">4</span>; k++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(k == <span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y - <span class="number">1</span>]) flag++;<span class="comment">//判断是否有足够的空间放下T</span></span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y + <span class="number">1</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x + <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x + <span class="number">2</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(flag == <span class="number">4</span>) vis[x][y - <span class="number">1</span>] = vis[x][y + <span class="number">1</span>] = vis[x + <span class="number">1</span>][y] = vis[x + <span class="number">2</span>][y] = <span class="number">1</span>; <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(f[x][y] &gt; step + <span class="number">2</span>) <span class="keyword">continue</span>;<span class="comment">//剪枝</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(f[x][y] &lt; step) f[x][y] = step;<span class="comment">//更新最大值</span></span><br><span class="line">			work(step);</span><br><span class="line">			vis[x][y - <span class="number">1</span>] = vis[x][y + <span class="number">1</span>] = vis[x + <span class="number">1</span>][y] = vis[x + <span class="number">2</span>][y] = <span class="number">0</span>;<span class="comment">//回溯</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(k == <span class="number">2</span>)&#123;<span class="comment">//k = 2,3,4的情况直接复制上面再简单改一改就行了</span></span><br><span class="line">			<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x + <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x - <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y - <span class="number">1</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y - <span class="number">2</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(flag == <span class="number">4</span>) vis[x + <span class="number">1</span>][y] = vis[x - <span class="number">1</span>][y] = vis[x][y - <span class="number">1</span>] = vis[x][y - <span class="number">2</span>] = <span class="number">1</span>; <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(f[x][y] &gt; step + <span class="number">2</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(f[x][y] &lt; step) f[x][y] = step;</span><br><span class="line">			work(step);</span><br><span class="line">			vis[x + <span class="number">1</span>][y] = vis[x - <span class="number">1</span>][y] = vis[x][y - <span class="number">1</span>] = vis[x][y - <span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(k == <span class="number">3</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y - <span class="number">1</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y + <span class="number">1</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x - <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x - <span class="number">2</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(flag == <span class="number">4</span>) vis[x][y - <span class="number">1</span>] = vis[x][y + <span class="number">1</span>] = vis[x - <span class="number">1</span>][y] = vis[x - <span class="number">2</span>][y] = <span class="number">1</span>; <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(f[x][y] &gt; step + <span class="number">2</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(f[x][y] &lt; step) f[x][y] = step;</span><br><span class="line">			work(step);</span><br><span class="line">			vis[x][y - <span class="number">1</span>] = vis[x][y + <span class="number">1</span>] = vis[x - <span class="number">1</span>][y] = vis[x - <span class="number">2</span>][y] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(k == <span class="number">4</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x + <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x - <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y + <span class="number">1</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y + <span class="number">2</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(flag == <span class="number">4</span>) vis[x + <span class="number">1</span>][y] = vis[x - <span class="number">1</span>][y] = vis[x][y + <span class="number">1</span>] = vis[x][y + <span class="number">2</span>] = <span class="number">1</span>; <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(f[x][y] &gt; step + <span class="number">2</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(f[x][y] &lt; step) f[x][y] = step;</span><br><span class="line">			work(step);</span><br><span class="line">			vis[x + <span class="number">1</span>][y] = vis[x - <span class="number">1</span>][y] = vis[x][y + <span class="number">1</span>] = vis[x][y + <span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> step)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)<span class="comment">//枚举下一个能放的点</span></span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">	  <span class="keyword">if</span>(!vis[i][j]) dfs(i , j , step + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://s2.ax1x.com/2019/03/16/AVbXO1.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">山东</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">各省省选</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2009</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dfs;深度优先搜索</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/代码//" class="article-tag-list-link color3">代码</a>
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/20/Txinggupai/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/16/daoluxiujian/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">洛谷 P2052 [NOI2011]道路修建 题解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-number">1.</span> <span class="toc-text">Code</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Txinggupai" data-title="P1380 T型骨牌 题解" data-url="http://yoursite.com/2019/08/20/Txinggupai/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2019/08/20/Txinggupai/", 
+    sourceId: "Txinggupai",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+  <div id="SOHUCS" sid="Txinggupai"></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "true",
+        conf: "true"
+    });
+</script>
+
+  
+
+  
+
+  
 
 
           </div>
@@ -253,9 +417,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
