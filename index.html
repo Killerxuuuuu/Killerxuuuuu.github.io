@@ -156,6 +156,130 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-shuxue1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/23/shuxue1/">An Interesting Math Problem</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/23/shuxue1/" class="archive-article-date">
+  	<time datetime="2019-08-23T13:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一题无关信息学（或许也有那么一点关系）</p>
+<h2 id="为什么会写这篇文章"><a href="#为什么会写这篇文章" class="headerlink" title="为什么会写这篇文章"></a>为什么会写这篇文章</h2><p>没事翻大视野，突然看见一行瞩目的大字（其实很小）：北京大学自主招生试题。然后抱着试试看的态度，就做了做。然后发现是一道很不错的也不算太难的趣题，于是就来分享一下这道题。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>是否$\exists x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。</p>
+<h2 id="从一个简单的问题入手"><a href="#从一个简单的问题入手" class="headerlink" title="从一个简单的问题入手"></a>从一个简单的问题入手</h2><p>证明一个数是否为有理数，这个事情我们应该有经验。</p>
+<p>人教版数学书七下就教过我们证明$\sqrt{2}$ 是无理数。我们简单回顾一下：</p>
+<p>解：假设$\sqrt{2}$为有理数,</p>
+<p>则一定有$p,q$，使$\sqrt{2} = \frac{p}{q} \ \ (p,q \in Z,\ \gcd(p,q)=1)$,</p>
+<p>$\therefore 2q^2=p^2$.</p>
+<p>$\because p^2$为偶数,$\therefore p$为偶数.</p>
+<p>令$p=2s$,则$p^2=4s^2$,</p>
+<p>$\therefore q^2=2s^2$,</p>
+<p>$\therefore q$为偶数,</p>
+<p>$\therefore \gcd(p,q)≠1$,矛盾,</p>
+<p>$\therefore \sqrt{2}$不是有理数,</p>
+<p>$\therefore \sqrt{2}$是无理数.</p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>有了上面的经验，现在重新审视这道题，我们已经有了些思路，照葫芦画瓢先写写看：</p>
+<p>解：假设$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$为有理数,</p>
+<p>则一定有$p,q,s,t$,使$\tan x + \sqrt{3}=\frac{p}{q},\cot x + \sqrt{3}=\frac{s}{t}$，其中$p,q,s,t \in Z,gcd(p,q)=gcd(s,t)=1$,</p>
+<p>则$\tan x = \frac{p}{q} - \sqrt{3},\cot x = \frac{s}{t} - \sqrt{3}$,</p>
+<p>两式相乘、化简得：$ps+2qt=\sqrt{3}(pt+sq)$,</p>
+<p>$\because ps+2qt$和$pt+sq$为有理数,</p>
+<p>$\therefore pt+sq = 0$,(否则等式右边是无理数，而左边是有理数，矛盾)</p>
+<p>$\therefore ps+2qt=0$.</p>
+<p>写到这里，没有花费我太多的时间，但是接下来的式子变换就很迷，很显然我们要求$\frac{p}{q}$，以目前的条件看着已经足够，但是对于字母一多就乱的我，变成了一件很难的事。</p>
+<p>于是我去翻了答案。。。瞄了一眼就感觉自己很sb。</p>
+<p>继续写：</p>
+<p>$\therefore sq = -pt,ps=-2qt$,</p>
+<p>$\therefore psq = -2q^2t$,</p>
+<p>$\because t ≠ 0$</p>
+<p>$\therefore -p^2=-2q^2$,</p>
+<p>$\therefore \frac{p^2}{q^2}=2$,</p>
+<p>$\therefore \frac{p}{q} = \pm \sqrt{2}$，矛盾，</p>
+<p>故不存在$x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>写公式真累。。。</p>
+<p>类似于这样的题目不妨先考虑反证法，最后只要能证明题设不成立即可。</p>
+<p>（自招遇到这种题目心里估计也要MMP）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">三角函数</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/23/shuxue1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Barn Painting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1037,81 +1161,6 @@
 
 
   
-    <article id="post-233" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/21/233/">博客修好了</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/21/233/" class="archive-article-date">
-  	<time datetime="2019-07-21T13:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>修好的方法就是重下$Node.js$。。。</p>
-<p>之前当了一个多月的文化课选手，然后从暑假开始就疯狂的找状态。从杭州回来后，也基本回归竞赛状态，又赶上暑假，可以疯狂肝文章了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/21/233/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1435,6 +1484,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">树形动规</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">三角函数</a>
               </li>
             
             <div class="clearfix"></div>

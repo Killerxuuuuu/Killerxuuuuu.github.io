@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>洛谷 P1816 忠诚 代码 | KillerXu的博客</title>
+  <title>An Interesting Math Problem | KillerXu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我直接当一道线段树的题练了。 这道题很简单，只要把往上传的过程的加变成去最小值就行了。 直接放代码吧。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;lt;cstring">
-<meta name="keywords" content="线段树">
+  <meta name="description" content="这一题无关信息学（或许也有那么一点关系） 为什么会写这篇文章没事翻大视野，突然看见一行瞩目的大字（其实很小）：北京大学自主招生试题。然后抱着试试看的态度，就做了做。然后发现是一道很不错的也不算太难的趣题，于是就来分享一下这道题。 题目是否$\exists x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。 从一个简单的问题入手证明一个数">
+<meta name="keywords" content="数论;数学,三角函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷 P1816 忠诚 代码">
-<meta property="og:url" content="http://yoursite.com/2019/04/07/zhongcheng/index.html">
+<meta property="og:title" content="An Interesting Math Problem">
+<meta property="og:url" content="http://yoursite.com/2019/08/23/shuxue1/index.html">
 <meta property="og:site_name" content="KillerXu的博客">
-<meta property="og:description" content="我直接当一道线段树的题练了。 这道题很简单，只要把往上传的过程的加变成去最小值就行了。 直接放代码吧。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;lt;cstring">
+<meta property="og:description" content="这一题无关信息学（或许也有那么一点关系） 为什么会写这篇文章没事翻大视野，突然看见一行瞩目的大字（其实很小）：北京大学自主招生试题。然后抱着试试看的态度，就做了做。然后发现是一道很不错的也不算太难的趣题，于是就来分享一下这道题。 题目是否$\exists x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。 从一个简单的问题入手证明一个数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-07T01:05:28.431Z">
+<meta property="og:updated_time" content="2019-08-23T13:52:51.916Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="洛谷 P1816 忠诚 代码">
-<meta name="twitter:description" content="我直接当一道线段树的题练了。 这道题很简单，只要把往上传的过程的加变成去最小值就行了。 直接放代码吧。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;lt;cstring">
+<meta name="twitter:title" content="An Interesting Math Problem">
+<meta name="twitter:description" content="这一题无关信息学（或许也有那么一点关系） 为什么会写这篇文章没事翻大视野，突然看见一行瞩目的大字（其实很小）：北京大学自主招生试题。然后抱着试试看的态度，就做了做。然后发现是一道很不错的也不算太难的趣题，于是就来分享一下这道题。 题目是否$\exists x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。 从一个简单的问题入手证明一个数">
   
     <link rel="alternative" href="/atom.xml" title="KillerXu的博客" type="application/atom+xml">
   
@@ -159,30 +159,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-zhongcheng" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-shuxue1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      洛谷 P1816 忠诚 代码
+      An Interesting Math Problem
     </h1>
   
 
         
-        <a href="/2019/04/07/zhongcheng/" class="archive-article-date">
-  	<time datetime="2019-04-07T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
+        <a href="/2019/08/23/shuxue1/" class="archive-article-date">
+  	<time datetime="2019-08-23T13:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我直接当一道线段树的题练了。</p>
-<p>这道题很简单，只要把往上传的过程的加变成去最小值就行了。</p>
-<p>直接放代码吧。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> ans[N&lt;&lt;<span class="number">2</span>],a[N];</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ls</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;<span class="keyword">return</span> p&lt;&lt;<span class="number">1</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rs</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;<span class="keyword">return</span> p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;ans[p]=min(ans[ls(p)],ans[rs(p)]);&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        ans[p]=a[++cnt];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    build(ls(p),l,mid);</span><br><span class="line">    build(rs(p),mid+<span class="number">1</span>,r);</span><br><span class="line">    pushup(p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> ql,<span class="keyword">int</span> qr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0x7fffffff</span>;</span><br><span class="line">    <span class="keyword">if</span>(ql&lt;=l &amp;&amp; qr&gt;=r)&#123;</span><br><span class="line">        res=ans[p];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(ql&lt;=mid) res=min(res,find(ls(p),l,mid,ql,qr));</span><br><span class="line">        <span class="keyword">if</span>(qr&gt;mid) res=min(res,find(rs(p),mid+<span class="number">1</span>,r,ql,qr));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> l,r;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;l,&amp;r);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,find(<span class="number">1</span>,<span class="number">1</span>,n,l,r));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>这一题无关信息学（或许也有那么一点关系）</p>
+<h2 id="为什么会写这篇文章"><a href="#为什么会写这篇文章" class="headerlink" title="为什么会写这篇文章"></a>为什么会写这篇文章</h2><p>没事翻大视野，突然看见一行瞩目的大字（其实很小）：北京大学自主招生试题。然后抱着试试看的态度，就做了做。然后发现是一道很不错的也不算太难的趣题，于是就来分享一下这道题。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>是否$\exists x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。</p>
+<h2 id="从一个简单的问题入手"><a href="#从一个简单的问题入手" class="headerlink" title="从一个简单的问题入手"></a>从一个简单的问题入手</h2><p>证明一个数是否为有理数，这个事情我们应该有经验。</p>
+<p>人教版数学书七下就教过我们证明$\sqrt{2}$ 是无理数。我们简单回顾一下：</p>
+<p>解：假设$\sqrt{2}$为有理数,</p>
+<p>则一定有$p,q$，使$\sqrt{2} = \frac{p}{q} \ \ (p,q \in Z,\ \gcd(p,q)=1)$,</p>
+<p>$\therefore 2q^2=p^2$.</p>
+<p>$\because p^2$为偶数,$\therefore p$为偶数.</p>
+<p>令$p=2s$,则$p^2=4s^2$,</p>
+<p>$\therefore q^2=2s^2$,</p>
+<p>$\therefore q$为偶数,</p>
+<p>$\therefore \gcd(p,q)≠1$,矛盾,</p>
+<p>$\therefore \sqrt{2}$不是有理数,</p>
+<p>$\therefore \sqrt{2}$是无理数.</p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>有了上面的经验，现在重新审视这道题，我们已经有了些思路，照葫芦画瓢先写写看：</p>
+<p>解：假设$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$为有理数,</p>
+<p>则一定有$p,q,s,t$,使$\tan x + \sqrt{3}=\frac{p}{q},\cot x + \sqrt{3}=\frac{s}{t}$，其中$p,q,s,t \in Z,gcd(p,q)=gcd(s,t)=1$,</p>
+<p>则$\tan x = \frac{p}{q} - \sqrt{3},\cot x = \frac{s}{t} - \sqrt{3}$,</p>
+<p>两式相乘、化简得：$ps+2qt=\sqrt{3}(pt+sq)$,</p>
+<p>$\because ps+2qt$和$pt+sq$为有理数,</p>
+<p>$\therefore pt+sq = 0$,(否则等式右边是无理数，而左边是有理数，矛盾)</p>
+<p>$\therefore ps+2qt=0$.</p>
+<p>写到这里，没有花费我太多的时间，但是接下来的式子变换就很迷，很显然我们要求$\frac{p}{q}$，以目前的条件看着已经足够，但是对于字母一多就乱的我，变成了一件很难的事。</p>
+<p>于是我去翻了答案。。。瞄了一眼就感觉自己很sb。</p>
+<p>继续写：</p>
+<p>$\therefore sq = -pt,ps=-2qt$,</p>
+<p>$\therefore psq = -2q^2t$,</p>
+<p>$\because t ≠ 0$</p>
+<p>$\therefore -p^2=-2q^2$,</p>
+<p>$\therefore \frac{p^2}{q^2}=2$,</p>
+<p>$\therefore \frac{p}{q} = \pm \sqrt{2}$，矛盾，</p>
+<p>故不存在$x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>写公式真累。。。</p>
+<p>类似于这样的题目不妨先考虑反证法，最后只要能证明题设不成立即可。</p>
+<p>（自招遇到这种题目心里估计也要MMP）</p>
+
       
 
       
@@ -221,7 +254,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">三角函数</a>
         		</li>
       		
 		</ul>
@@ -233,7 +270,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
+        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
         		</li>
       		
 		</ul>
@@ -288,7 +325,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/07/zhongcheng/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/23/shuxue1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +339,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/20/wuliaodeshulie/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          洛谷 P1438 无聊的数列 代码
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/05/tiehaibao/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">洛谷 P3740 [HAOI2014]贴海报 代码</div>
+    <a href="/2019/08/22/Barn Painting/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">洛谷 P4084 [USACO17DEC]Barn Painting 题解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -340,7 +368,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么会写这篇文章"><span class="toc-number">1.</span> <span class="toc-text">为什么会写这篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">2.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从一个简单的问题入手"><span class="toc-number">3.</span> <span class="toc-text">从一个简单的问题入手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题"><span class="toc-number">4.</span> <span class="toc-text">解题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -354,7 +382,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="zhongcheng" data-title="洛谷 P1816 忠诚 代码" data-url="http://yoursite.com/2019/04/07/zhongcheng/"></div>
+	<div class="ds-thread" data-thread-key="shuxue1" data-title="An Interesting Math Problem" data-url="http://yoursite.com/2019/08/23/shuxue1/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -377,8 +405,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2019/04/07/zhongcheng/", 
-    sourceId: "zhongcheng",
+    url: "http://yoursite.com/2019/08/23/shuxue1/", 
+    sourceId: "shuxue1",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -387,7 +415,7 @@
   
 
   
-  <div id="SOHUCS" sid="zhongcheng"></div> 
+  <div id="SOHUCS" sid="shuxue1"></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
 <script type="text/javascript">
     window.changyan.api.config({
