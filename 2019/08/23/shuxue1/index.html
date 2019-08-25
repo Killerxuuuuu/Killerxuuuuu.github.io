@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="KillerXu的博客">
 <meta property="og:description" content="这一题无关信息学（或许也有那么一点关系） 为什么会写这篇文章没事翻大视野，突然看见一行瞩目的大字（其实很小）：北京大学自主招生试题。然后抱着试试看的态度，就做了做。然后发现是一道很不错的也不算太难的趣题，于是就来分享一下这道题。 题目是否$\exists x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。 从一个简单的问题入手证明一个数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-23T13:52:51.916Z">
+<meta property="og:updated_time" content="2019-08-25T13:48:46.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="An Interesting Math Problem">
 <meta name="twitter:description" content="这一题无关信息学（或许也有那么一点关系） 为什么会写这篇文章没事翻大视野，突然看见一行瞩目的大字（其实很小）：北京大学自主招生试题。然后抱着试试看的态度，就做了做。然后发现是一道很不错的也不算太难的趣题，于是就来分享一下这道题。 题目是否$\exists x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。 从一个简单的问题入手证明一个数">
@@ -189,14 +189,14 @@
 <p>$\therefore 2q^2=p^2$.</p>
 <p>$\because p^2$为偶数,$\therefore p$为偶数.</p>
 <p>令$p=2s$,则$p^2=4s^2$,</p>
-<p>$\therefore q^2=2s^2$,</p>
+<p>$\therefore q^2=2s^2,(s \in Z)$</p>
 <p>$\therefore q$为偶数,</p>
 <p>$\therefore \gcd(p,q)≠1$,矛盾,</p>
 <p>$\therefore \sqrt{2}$不是有理数,</p>
 <p>$\therefore \sqrt{2}$是无理数.</p>
 <h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>有了上面的经验，现在重新审视这道题，我们已经有了些思路，照葫芦画瓢先写写看：</p>
 <p>解：假设$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$为有理数,</p>
-<p>则一定有$p,q,s,t$,使$\tan x + \sqrt{3}=\frac{p}{q},\cot x + \sqrt{3}=\frac{s}{t}$，其中$p,q,s,t \in Z,gcd(p,q)=gcd(s,t)=1$,</p>
+<p>则一定有$p,q,s,t$,使$\tan x + \sqrt{3}=\frac{p}{q},\cot x + \sqrt{3}=\frac{s}{t}$，其中$p,q,s,t \in Z,\gcd(p,q)=\gcd(s,t)=1$,</p>
 <p>则$\tan x = \frac{p}{q} - \sqrt{3},\cot x = \frac{s}{t} - \sqrt{3}$,</p>
 <p>两式相乘、化简得：$ps+2qt=\sqrt{3}(pt+sq)$,</p>
 <p>$\because ps+2qt$和$pt+sq$为有理数,</p>
@@ -215,6 +215,7 @@
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>写公式真累。。。</p>
 <p>类似于这样的题目不妨先考虑反证法，最后只要能证明题设不成立即可。</p>
 <p>（自招遇到这种题目心里估计也要MMP）</p>
+<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><p>2019.8.25 对证明进行了完善，补充公式。</p>
 
       
 
@@ -368,7 +369,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么会写这篇文章"><span class="toc-number">1.</span> <span class="toc-text">为什么会写这篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">2.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从一个简单的问题入手"><span class="toc-number">3.</span> <span class="toc-text">从一个简单的问题入手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题"><span class="toc-number">4.</span> <span class="toc-text">解题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么会写这篇文章"><span class="toc-number">1.</span> <span class="toc-text">为什么会写这篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">2.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从一个简单的问题入手"><span class="toc-number">3.</span> <span class="toc-text">从一个简单的问题入手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题"><span class="toc-number">4.</span> <span class="toc-text">解题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Update"><span class="toc-number">6.</span> <span class="toc-text">Update</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -907,20 +908,5 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
