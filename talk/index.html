@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="KillerXu的博客">
 <meta property="og:description" content="一、关于我很垃圾就对了 一个热爱模拟飞行的OIer。 二、我的经历2016，接触Pascal 2017，接触C语言 2017，NOIP，普及组前两题30min左右写完，第三题调到比赛结束只有5分；提高组水出第一题规律。 2017，转战C++ 2018年AHOI初中组，第一题不开long long见了祖宗，见识太少狂做第二题，第三题没耐心水了个60分的做法，草草收场。 2018安徽省大学生程序设计大">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-29T05:59:53.844Z">
+<meta property="og:updated_time" content="2019-08-29T06:02:26.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KillerXu的博客">
 <meta name="twitter:description" content="一、关于我很垃圾就对了 一个热爱模拟飞行的OIer。 二、我的经历2016，接触Pascal 2017，接触C语言 2017，NOIP，普及组前两题30min左右写完，第三题调到比赛结束只有5分；提高组水出第一题规律。 2017，转战C++ 2018年AHOI初中组，第一题不开long long见了祖宗，见识太少狂做第二题，第三题没耐心水了个60分的做法，草草收场。 2018安徽省大学生程序设计大">
@@ -176,7 +176,7 @@
 <p>2019年杭州集训</p>
 <p><strong>to be continued…</strong></p>
 <h2 id="三、关于本博客的搭建及对搭建博客的建议"><a href="#三、关于本博客的搭建及对搭建博客的建议" class="headerlink" title="三、关于本博客的搭建及对搭建博客的建议"></a>三、关于本博客的搭建及对搭建博客的建议</h2><p>首先，如果你想方便的话，直接使用CSDN和博客园就好了。</p>
-<p>如果你很强，你可以像大佬一样搭建<a href="hzwer.com">这样的博客</a></p>
+<p>如果你很强，你可以像hzw大佬那样搭建博客。</p>
 <p>而用hexo搭建博客，正好介于两者之间，个性化比较强且搭建比较方便。</p>
 <p>虽然比较方便，但是一开始可能会比较懵，我参考了洛谷日报的三篇文章，如果有兴趣的话，可以找一下（三篇文章好像是连续的，大概是140多期）。</p>
 <p>细心一点大概一个星期左右就能处理好，然后就是下载主题，个人比较喜好yilia这个主题，比较简约，下完以后在yilia目录下的_config.yml文件里可以设置一些东西。</p>
@@ -840,5 +840,20 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
