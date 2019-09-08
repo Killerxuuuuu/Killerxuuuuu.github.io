@@ -156,6 +156,136 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-shuxuenote1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/08/shuxuenote1/">数学笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/08/shuxuenote1/" class="archive-article-date">
+  	<time datetime="2019-09-08T02:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大视野真是本好书。</p>
+<p>把简单的初中数学玩出一堆花样。</p>
+<p>讲讲几个关于一元二次方程的东西。</p>
+<p>（写公式很累……过程写的比较简单）</p>
+<h2 id="一、判别式"><a href="#一、判别式" class="headerlink" title="一、判别式"></a>一、判别式</h2><h3 id="1、概念复习"><a href="#1、概念复习" class="headerlink" title="1、概念复习"></a>1、概念复习</h3><p>基础。解关于$x$的一元二次方程$ax^2+bx+c=0 \ (a ≠ 0)$，简单推导，可得求根公式：</p>
+<script type="math/tex; mode=display">x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}</script><p>我们发现有一个根号，由于其具有双重非负性，比较特殊，我们可以对其进行讨论。令$\Delta = b^2 - 4ac$，显然$\Delta \geq 0$时有实数根，反之无实数根。</p>
+<h3 id="2、于是……"><a href="#2、于是……" class="headerlink" title="2、于是……"></a>2、于是……</h3><p>可以看见判别式作用挺大的，平常考试也就考考取值范围。</p>
+<p>但是毒瘤竞赛不这样啊，总要玩出点花样。</p>
+<h3 id="3、例题"><a href="#3、例题" class="headerlink" title="3、例题"></a>3、例题</h3><p>证明：不存在正整数$a,b$满足等式$4a(a+1)=b(b+3)$。</p>
+<p>什么鬼题目，一副不可做的样子……</p>
+<p>先正常处理一下吧：</p>
+<p>$4a^2+4a-b^2-3b =0$</p>
+<p>可以看作是一个关于$a$的一元二次方程。</p>
+<p>原始人类的直觉，看判别式：</p>
+<p>$\Delta = 16(b^2+3b+1)$</p>
+<p>$\because a,b$存在</p>
+<p>$\therefore \Delta \geq 0$</p>
+<p>然后发现走不下去了。</p>
+<p>重新读题，发现$a,b$是正整数，那么$\Delta$一定是个完全平方数！</p>
+<p>因为$16$是完全平方数，所以也就是$(b^2+3b+1)$是完全平方数。</p>
+<p>可以观察到：$(b+1)^2=b^2+2b+1 \leq b^2+3b+1 \leq b^2 +4b+4=(b+2)^2$</p>
+<p>$\Delta$介于两个相邻的平方数之间，也就是说，$\Delta$不可能是一个完全平方数，于是不存在正整数$a,b$满足给定等式。</p>
+<p>总结：遇到说什么根是有理数，是整数之类的题目，可以考虑$\Delta$是不是完全平方数。</p>
+<h3 id="4、练习"><a href="#4、练习" class="headerlink" title="4、练习"></a>4、练习</h3><p>已知方程$x^2-6x-4n^2-32n=0$的根都是整数，求整数$n$的值。    </p>
+<h2 id="二、韦达定理"><a href="#二、韦达定理" class="headerlink" title="二、韦达定理"></a>二、韦达定理</h2><h3 id="1、概念复习-1"><a href="#1、概念复习-1" class="headerlink" title="1、概念复习"></a>1、概念复习</h3><p>基础。对于一元二次方程$ax^2+bx+c \ (a≠0)$的两根$x_1,x_2$</p>
+<p>有</p>
+<script type="math/tex; mode=display">x_1+x_2=-\frac{b}{a}</script><script type="math/tex; mode=display">x_1x_2=\frac{c}{a}</script><p>挺有特点的是不是？</p>
+<p>那接下来我们反向思考一下：</p>
+<p>存在$a,b$使得</p>
+<script type="math/tex; mode=display">a+b=m,ab=n</script><p>因为$a,b$存在，所以我们可以把$a,b$当作$x^2-mx+n$的根。</p>
+<h3 id="2、用途"><a href="#2、用途" class="headerlink" title="2、用途"></a>2、用途</h3><p>如上，一元二次方程有一个判别式，也就是$\Delta$，它决定着方程解的情况。</p>
+<p>那么上面的例子，我们已经给出关于$a,b$的两个式子，并且推导出了它们是一个一元二次方程的根。既然他们存在，那么一定$\Delta \geq 0$，通过此，我们可以决定一些取值范围，这在题目中可以起到很大的作用。</p>
+<h3 id="3、例题-1"><a href="#3、例题-1" class="headerlink" title="3、例题"></a>3、例题</h3><p>求证：对任意一个矩形$A$，总存在一个矩形$B$，使矩形$B$与矩形$A$的周长和面积比等于$k(k \geq 1)$。</p>
+<p>又是证明题？还一副不可做的样子……</p>
+<p>行吧，先把能做的做好，设矩形$A$的两边长分别为$a,b$，矩形$b$的两边长分别为$x,y$。</p>
+<p>有（我不太会画大括号）：</p>
+<script type="math/tex; mode=display">k(a+b)=x+y,kab=xy</script><p>出现了$x+y$和$xy$，学以致用：</p>
+<p>可以把$a,b$看作是方程$t^2-k(a+b)t+kab$的根。</p>
+<p>$x,y$显然存在，即$\Delta \geq 0$,</p>
+<p>$\therefore [k(a+b)]^2 -4kab = k^2a^2+2k^2ab+k^2b^2-4kab$</p>
+<p>似乎遇到了些问题，这个式子没办法因式分解了。</p>
+<p>但我们发现$k \geq 1$，所以$k^2 \geq k$，这是个很巧妙的思想，第一次遇见好像是初二的一道题。</p>
+<p>$\therefore \Delta \geq k^2a^2+2k^2ab+k^2b^2-4k^2ab=k^2(a-b)^2 \geq 0$</p>
+<p>又$k(a+b) \geq 0,kab \geq 0$，所以两根均为正。</p>
+<p>故这样的矩形总是存在的。</p>
+<h3 id="4、练习-1"><a href="#4、练习-1" class="headerlink" title="4、练习"></a>4、练习</h3><p>已知实数$a,b$满足$a+ab+b=3$，若$m=a-ab+b$，求$m$的取值范围。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/08/shuxuenote1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-NOIPmuban" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1065,106 +1195,6 @@
 
 
   
-    <article id="post-shenqidehezi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/05/shenqidehezi/">【AKOI2019】暑期欢乐模拟赛 T3 神奇的盒子 题解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/05/shenqidehezi/" class="archive-article-date">
-  	<time datetime="2019-08-05T12:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这道题其实是一道很经典的组合数学题，这里简单的推导一下。</p>
-<p>大致题意：从$n$个不同的元素中重复取出$m$个元素，问取法个数。</p>
-<p>设第$i$个元素选了$x_i$个，则方程</p>
-<script type="math/tex; mode=display">\sum_{i=1}^n x_i=m</script><p>的非负整数解，就是答案。</p>
-<p>于是可以理解为将$m$个$1$排成一排，插入$n-1$个分隔符即分成$n$段，各分段的$1$的个数就是方程的一个解，而插入分隔符的过程，实质就是从<br>$n+m-1$个位置中选择$n-1$个位置放分隔符，其余$m$个位置放$1$，于是方案数有$C(n+m-1,n-1)=C(n+m-1,m)$种。（组合数公式好看的版本写炸了，凑合着看吧）</p>
-<p>最后对答案取模$p$即可。</p>
-<p>然后你就爆炸了。组合数可不好算。</p>
-<p>数据那么大，肯定要用写毒瘤手段优化了，因为$p$是质数，写个$Lucas$定理就行了。</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">ll a[N];</span><br><span class="line"><span class="keyword">int</span> p;</span><br><span class="line"><span class="keyword">int</span> T;</span><br><span class="line"><span class="function">ll <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">1</span>,w=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> c=getchar();</span><br><span class="line">    <span class="keyword">while</span>(c&lt;<span class="string">'0'</span> || c&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(c==<span class="string">'-'</span>) x=<span class="number">-1</span>; c=getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(c&gt;=<span class="string">'0'</span> &amp;&amp; c&lt;=<span class="string">'9'</span>)&#123;w=w*<span class="number">10</span>+(c-<span class="string">'0'</span>); c=getchar();&#125;</span><br><span class="line">    <span class="keyword">return</span> x*w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x,<span class="keyword">int</span> m,<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    x%=p;</span><br><span class="line">    ll ans=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(m)&#123;</span><br><span class="line">        <span class="keyword">if</span>(m&amp;<span class="number">1</span>) ans=ans*x%p;</span><br><span class="line">        x=x*x%p;</span><br><span class="line">        m&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">getc</span><span class="params">(ll n,ll m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(m&gt;n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> ((a[n]*qpow(a[m],p<span class="number">-2</span>,p))%p*qpow(a[n-m],p<span class="number">-2</span>,p)%p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">Lucas</span><span class="params">(ll n,ll m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!m) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> getc(n%p,m%p)*Lucas(n/p,m/p)%p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    T=read();</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="keyword">int</span> n=read();</span><br><span class="line">        <span class="keyword">int</span> m=read();</span><br><span class="line">        p=read();</span><br><span class="line">        a[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=p;i++) a[i]=(a[i<span class="number">-1</span>]*i)%p;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,Lucas(n+m<span class="number">-1</span>,m));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">组合数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Lucas</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/05/shenqidehezi/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1652,5 +1682,20 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

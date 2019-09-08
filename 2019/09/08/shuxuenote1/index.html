@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>洛谷 P2052 [NOI2011]道路修建 题解 | KillerXu的博客</title>
+  <title>数学笔记 | KillerXu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接 和centre那道题处理方法一样，这个还简单一点，处理子节点个数和父亲那边节点个数，然后就可以计算出断掉一边后，两边节点个数了。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676">
-<meta name="keywords" content="动态规划,dfs;深度优先搜索,树,树形动规">
+  <meta name="description" content="大视野真是本好书。 把简单的初中数学玩出一堆花样。 讲讲几个关于一元二次方程的东西。 （写公式很累……过程写的比较简单） 一、判别式1、概念复习基础。解关于$x$的一元二次方程$ax^2+bx+c=0 \ (a ≠ 0)$，简单推导，可得求根公式： x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}我们发现有一个根号，由于其具有双重非负性，比较特殊，我们可以对其进行讨论。令$">
+<meta name="keywords" content="数论;数学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷 P2052 [NOI2011]道路修建 题解">
-<meta property="og:url" content="http://yoursite.com/2019/08/16/daoluxiujian/index.html">
+<meta property="og:title" content="数学笔记">
+<meta property="og:url" content="http://yoursite.com/2019/09/08/shuxuenote1/index.html">
 <meta property="og:site_name" content="KillerXu的博客">
-<meta property="og:description" content="题目链接 和centre那道题处理方法一样，这个还简单一点，处理子节点个数和父亲那边节点个数，然后就可以计算出断掉一边后，两边节点个数了。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676">
+<meta property="og:description" content="大视野真是本好书。 把简单的初中数学玩出一堆花样。 讲讲几个关于一元二次方程的东西。 （写公式很累……过程写的比较简单） 一、判别式1、概念复习基础。解关于$x$的一元二次方程$ax^2+bx+c=0 \ (a ≠ 0)$，简单推导，可得求根公式： x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}我们发现有一个根号，由于其具有双重非负性，比较特殊，我们可以对其进行讨论。令$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T13:45:54.896Z">
+<meta property="og:updated_time" content="2019-09-08T13:07:37.025Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="洛谷 P2052 [NOI2011]道路修建 题解">
-<meta name="twitter:description" content="题目链接 和centre那道题处理方法一样，这个还简单一点，处理子节点个数和父亲那边节点个数，然后就可以计算出断掉一边后，两边节点个数了。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676">
+<meta name="twitter:title" content="数学笔记">
+<meta name="twitter:description" content="大视野真是本好书。 把简单的初中数学玩出一堆花样。 讲讲几个关于一元二次方程的东西。 （写公式很累……过程写的比较简单） 一、判别式1、概念复习基础。解关于$x$的一元二次方程$ax^2+bx+c=0 \ (a ≠ 0)$，简单推导，可得求根公式： x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}我们发现有一个根号，由于其具有双重非负性，比较特殊，我们可以对其进行讨论。令$">
   
     <link rel="alternative" href="/atom.xml" title="KillerXu的博客" type="application/atom+xml">
   
@@ -159,29 +159,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-daoluxiujian" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-shuxuenote1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      洛谷 P2052 [NOI2011]道路修建 题解
+      数学笔记
     </h1>
   
 
         
-        <a href="/2019/08/16/daoluxiujian/" class="archive-article-date">
-  	<time datetime="2019-08-16T13:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
+        <a href="/2019/09/08/shuxuenote1/" class="archive-article-date">
+  	<time datetime="2019-09-08T02:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://www.luogu.org/problem/P2052" target="_blank" rel="noopener">题目链接</a></p>
-<p>和centre那道题处理方法一样，这个还简单一点，处理子节点个数和父亲那边节点个数，然后就可以计算出断掉一边后，两边节点个数了。</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1000005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to , next , val;</span><br><span class="line">&#125;edge[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> head[N] , tot = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">ll f[N] , g[N];</span><br><span class="line">ll ans = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u , <span class="keyword">int</span> v , <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">	edge[++tot].to = v;</span><br><span class="line">	edge[tot].val = d;</span><br><span class="line">	edge[tot].next = head[u];</span><br><span class="line">	head[u] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	f[x] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = edge[i].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> to = edge[i].to;</span><br><span class="line">		<span class="keyword">if</span>(to == fa) <span class="keyword">continue</span>;</span><br><span class="line">		dfs1(to , x);</span><br><span class="line">		f[x] += f[to];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = head[fa]; i; i = edge[i].next)&#123;</span><br><span class="line">		<span class="keyword">if</span>(edge[i].to == x)&#123;</span><br><span class="line">			g[x] += g[fa] + f[fa];</span><br><span class="line">			g[x] -= f[x];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = edge[i].next)</span><br><span class="line">	 <span class="keyword">if</span>(edge[i].to != fa)</span><br><span class="line">	  dfs2(edge[i].to , x);</span><br><span class="line">&#125;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">abs</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x &lt; <span class="number">0</span>) <span class="keyword">return</span> -x;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	<span class="comment">//cout &lt;&lt; x &lt;&lt; " " &lt;&lt; fa &lt;&lt; " " &lt;&lt; ans &lt;&lt; "\n";</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = edge[i].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> to = edge[i].to;</span><br><span class="line">		<span class="keyword">if</span>(to == fa) <span class="keyword">continue</span>;</span><br><span class="line">		ans += edge[i].val * <span class="built_in">abs</span>(f[x] - f[to] + g[x] - f[to]);</span><br><span class="line">		solve(to , x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span> , &amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> u , v , d;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span> , &amp;u , &amp;v , &amp;d);</span><br><span class="line">		add(u , v , d);</span><br><span class="line">		add(v , u , d);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	dfs1(<span class="number">1</span> , <span class="number">0</span>);</span><br><span class="line">	dfs2(<span class="number">1</span> , <span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//for(int i = 1; i &lt;= n; i++) cout &lt;&lt; f[i] &lt;&lt; " ";</span></span><br><span class="line">	<span class="comment">//cout &lt;&lt; endl;</span></span><br><span class="line">	<span class="comment">//for(int i = 1; i &lt;= n; i++) cout &lt;&lt; g[i] &lt;&lt; " ";</span></span><br><span class="line">	<span class="comment">//cout &lt;&lt; "\n";</span></span><br><span class="line">	</span><br><span class="line">	solve(<span class="number">1</span> , <span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans;</span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>大视野真是本好书。</p>
+<p>把简单的初中数学玩出一堆花样。</p>
+<p>讲讲几个关于一元二次方程的东西。</p>
+<p>（写公式很累……过程写的比较简单）</p>
+<h2 id="一、判别式"><a href="#一、判别式" class="headerlink" title="一、判别式"></a>一、判别式</h2><h3 id="1、概念复习"><a href="#1、概念复习" class="headerlink" title="1、概念复习"></a>1、概念复习</h3><p>基础。解关于$x$的一元二次方程$ax^2+bx+c=0 \ (a ≠ 0)$，简单推导，可得求根公式：</p>
+<script type="math/tex; mode=display">x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}</script><p>我们发现有一个根号，由于其具有双重非负性，比较特殊，我们可以对其进行讨论。令$\Delta = b^2 - 4ac$，显然$\Delta \geq 0$时有实数根，反之无实数根。</p>
+<h3 id="2、于是……"><a href="#2、于是……" class="headerlink" title="2、于是……"></a>2、于是……</h3><p>可以看见判别式作用挺大的，平常考试也就考考取值范围。</p>
+<p>但是毒瘤竞赛不这样啊，总要玩出点花样。</p>
+<h3 id="3、例题"><a href="#3、例题" class="headerlink" title="3、例题"></a>3、例题</h3><p>证明：不存在正整数$a,b$满足等式$4a(a+1)=b(b+3)$。</p>
+<p>什么鬼题目，一副不可做的样子……</p>
+<p>先正常处理一下吧：</p>
+<p>$4a^2+4a-b^2-3b =0$</p>
+<p>可以看作是一个关于$a$的一元二次方程。</p>
+<p>原始人类的直觉，看判别式：</p>
+<p>$\Delta = 16(b^2+3b+1)$</p>
+<p>$\because a,b$存在</p>
+<p>$\therefore \Delta \geq 0$</p>
+<p>然后发现走不下去了。</p>
+<p>重新读题，发现$a,b$是正整数，那么$\Delta$一定是个完全平方数！</p>
+<p>因为$16$是完全平方数，所以也就是$(b^2+3b+1)$是完全平方数。</p>
+<p>可以观察到：$(b+1)^2=b^2+2b+1 \leq b^2+3b+1 \leq b^2 +4b+4=(b+2)^2$</p>
+<p>$\Delta$介于两个相邻的平方数之间，也就是说，$\Delta$不可能是一个完全平方数，于是不存在正整数$a,b$满足给定等式。</p>
+<p>总结：遇到说什么根是有理数，是整数之类的题目，可以考虑$\Delta$是不是完全平方数。</p>
+<h3 id="4、练习"><a href="#4、练习" class="headerlink" title="4、练习"></a>4、练习</h3><p>已知方程$x^2-6x-4n^2-32n=0$的根都是整数，求整数$n$的值。    </p>
+<h2 id="二、韦达定理"><a href="#二、韦达定理" class="headerlink" title="二、韦达定理"></a>二、韦达定理</h2><h3 id="1、概念复习-1"><a href="#1、概念复习-1" class="headerlink" title="1、概念复习"></a>1、概念复习</h3><p>基础。对于一元二次方程$ax^2+bx+c \ (a≠0)$的两根$x_1,x_2$</p>
+<p>有</p>
+<script type="math/tex; mode=display">x_1+x_2=-\frac{b}{a}</script><script type="math/tex; mode=display">x_1x_2=\frac{c}{a}</script><p>挺有特点的是不是？</p>
+<p>那接下来我们反向思考一下：</p>
+<p>存在$a,b$使得</p>
+<script type="math/tex; mode=display">a+b=m,ab=n</script><p>因为$a,b$存在，所以我们可以把$a,b$当作$x^2-mx+n$的根。</p>
+<h3 id="2、用途"><a href="#2、用途" class="headerlink" title="2、用途"></a>2、用途</h3><p>如上，一元二次方程有一个判别式，也就是$\Delta$，它决定着方程解的情况。</p>
+<p>那么上面的例子，我们已经给出关于$a,b$的两个式子，并且推导出了它们是一个一元二次方程的根。既然他们存在，那么一定$\Delta \geq 0$，通过此，我们可以决定一些取值范围，这在题目中可以起到很大的作用。</p>
+<h3 id="3、例题-1"><a href="#3、例题-1" class="headerlink" title="3、例题"></a>3、例题</h3><p>求证：对任意一个矩形$A$，总存在一个矩形$B$，使矩形$B$与矩形$A$的周长和面积比等于$k(k \geq 1)$。</p>
+<p>又是证明题？还一副不可做的样子……</p>
+<p>行吧，先把能做的做好，设矩形$A$的两边长分别为$a,b$，矩形$b$的两边长分别为$x,y$。</p>
+<p>有（我不太会画大括号）：</p>
+<script type="math/tex; mode=display">k(a+b)=x+y,kab=xy</script><p>出现了$x+y$和$xy$，学以致用：</p>
+<p>可以把$a,b$看作是方程$t^2-k(a+b)t+kab$的根。</p>
+<p>$x,y$显然存在，即$\Delta \geq 0$,</p>
+<p>$\therefore [k(a+b)]^2 -4kab = k^2a^2+2k^2ab+k^2b^2-4kab$</p>
+<p>似乎遇到了些问题，这个式子没办法因式分解了。</p>
+<p>但我们发现$k \geq 1$，所以$k^2 \geq k$，这是个很巧妙的思想，第一次遇见好像是初二的一道题。</p>
+<p>$\therefore \Delta \geq k^2a^2+2k^2ab+k^2b^2-4k^2ab=k^2(a-b)^2 \geq 0$</p>
+<p>又$k(a+b) \geq 0,kab \geq 0$，所以两根均为正。</p>
+<p>故这样的矩形总是存在的。</p>
+<h3 id="4、练习-1"><a href="#4、练习-1" class="headerlink" title="4、练习"></a>4、练习</h3><p>已知实数$a,b$满足$a+ab+b=3$，若$m=a-ab+b$，求$m$的取值范围。</p>
 
       
 
@@ -221,19 +264,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dfs;深度优先搜索</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">树</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">树形动规</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
         		</li>
       		
 		</ul>
@@ -245,7 +276,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
+        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
         		</li>
       		
 		</ul>
@@ -300,7 +331,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/16/daoluxiujian/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/08/shuxuenote1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,18 +345,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/20/Txinggupai/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          P1380 T型骨牌 题解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/08/pawn/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CF41D Pawn 题解</div>
+    <a href="/2019/09/01/NOIPmuban/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NOIP考前模板练习汇总</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -352,7 +374,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-number">1.</span> <span class="toc-text">Code</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、判别式"><span class="toc-number">1.</span> <span class="toc-text">一、判别式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、概念复习"><span class="toc-number">1.1.</span> <span class="toc-text">1、概念复习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、于是……"><span class="toc-number">1.2.</span> <span class="toc-text">2、于是……</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、例题"><span class="toc-number">1.3.</span> <span class="toc-text">3、例题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、练习"><span class="toc-number">1.4.</span> <span class="toc-text">4、练习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、韦达定理"><span class="toc-number">2.</span> <span class="toc-text">二、韦达定理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、概念复习-1"><span class="toc-number">2.1.</span> <span class="toc-text">1、概念复习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、用途"><span class="toc-number">2.2.</span> <span class="toc-text">2、用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、例题-1"><span class="toc-number">2.3.</span> <span class="toc-text">3、例题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、练习-1"><span class="toc-number">2.4.</span> <span class="toc-text">4、练习</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -366,7 +388,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="daoluxiujian" data-title="洛谷 P2052 [NOI2011]道路修建 题解" data-url="http://yoursite.com/2019/08/16/daoluxiujian/"></div>
+	<div class="ds-thread" data-thread-key="shuxuenote1" data-title="数学笔记" data-url="http://yoursite.com/2019/09/08/shuxuenote1/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -389,8 +411,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2019/08/16/daoluxiujian/", 
-    sourceId: "daoluxiujian",
+    url: "http://yoursite.com/2019/09/08/shuxuenote1/", 
+    sourceId: "shuxuenote1",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -399,7 +421,7 @@
   
 
   
-  <div id="SOHUCS" sid="daoluxiujian"></div> 
+  <div id="SOHUCS" sid="shuxuenote1"></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
 <script type="text/javascript">
     window.changyan.api.config({
