@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 数论;数学 | KillerXu的博客</title>
+  <title>数学笔记2——代数最值 | KillerXu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="KillerXu的博客">
-<meta property="og:url" content="http://yoursite.com/tags/数论-数学/index.html">
+  <meta name="description" content="Part 0题外话：曾经傻傻的我以为极值和最值是一个东西。 Part1最简单的，$x^2$的最小值是多少？小学生都知道，$0$。 上了初中，$\sqrt{x}$的最小值是多少？还是$0$。多问一句，$x$的最小值是多少？，$0$。算数平方根具有双重非负性。 这是很简单的代数最值。 接下来，求$x^2+4x+5$的最值。 我们考虑配方，得到$(x+2)^2+1$，由于$(x+2)^2 \geq 0$">
+<meta name="keywords" content="数论;数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数学笔记2——代数最值">
+<meta property="og:url" content="http://yoursite.com/2019/09/08/shuxuenote2/index.html">
 <meta property="og:site_name" content="KillerXu的博客">
+<meta property="og:description" content="Part 0题外话：曾经傻傻的我以为极值和最值是一个东西。 Part1最简单的，$x^2$的最小值是多少？小学生都知道，$0$。 上了初中，$\sqrt{x}$的最小值是多少？还是$0$。多问一句，$x$的最小值是多少？，$0$。算数平方根具有双重非负性。 这是很简单的代数最值。 接下来，求$x^2+4x+5$的最值。 我们考虑配方，得到$(x+2)^2+1$，由于$(x+2)^2 \geq 0$">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/12/nDlAun.png">
+<meta property="og:updated_time" content="2019-09-13T14:02:54.153Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KillerXu的博客">
+<meta name="twitter:title" content="数学笔记2——代数最值">
+<meta name="twitter:description" content="Part 0题外话：曾经傻傻的我以为极值和最值是一个东西。 Part1最简单的，$x^2$的最小值是多少？小学生都知道，$0$。 上了初中，$\sqrt{x}$的最小值是多少？还是$0$。多问一句，$x$的最小值是多少？，$0$。算数平方根具有双重非负性。 这是很简单的代数最值。 接下来，求$x^2+4x+5$的最值。 我们考虑配方，得到$(x+2)^2+1$，由于$(x+2)^2 \geq 0$">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/12/nDlAun.png">
   
     <link rel="alternative" href="/atom.xml" title="KillerXu的博客" type="application/atom+xml">
   
@@ -154,36 +161,116 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-shuxuenote2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      数学笔记2——代数最值
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/08/shuxuenote1/" class="archive-article-date">
+
+        
+        <a href="/2019/09/08/shuxuenote2/" class="archive-article-date">
   	<time datetime="2019-09-08T02:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/shuxuenote1/">数学笔记1</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><p>题外话：曾经傻傻的我以为极值和最值是一个东西。</p>
+<h2 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h2><p>最简单的，$x^2$的最小值是多少？小学生都知道，$0$。</p>
+<p>上了初中，$\sqrt{x}$的最小值是多少？还是$0$。多问一句，$x$的最小值是多少？，$0$。算数平方根具有双重非负性。</p>
+<p>这是很简单的代数最值。</p>
+<p>接下来，求$x^2+4x+5$的最值。</p>
+<p>我们考虑配方，得到$(x+2)^2+1$，由于$(x+2)^2 \geq 0$，所以$(x+2)^2+1 \geq 1$，可以看出该式有最小值$1$。或者我们考虑二次函数，令$f(x)=x^2+4x+5$，显然该函数开口向上，有最小值在对称点。公式不好打就不给了，自己算一下即可。</p>
+<p>这样，求代数最值的精髓就找到了。</p>
+<p>看看题目：</p>
+<h2 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h2><p>$Q1:$设$x$为正实数，则函数$y=x^2-x+\frac{1}{x}$的最小值是多少？</p>
+<p>这一题我们发现有分式，可以判断用二次函数应该不行了。那就尝试配方。</p>
+<p>原式$=(x-1)^2+(\sqrt{x}-\frac{1}{\sqrt{x}})^2+1$</p>
+<p>当$x=1$时，$y_{min}=1$</p>
+<p>$Q2:$已知$y=\sqrt{x-1}+\sqrt{4-x} (x,y \in R)$，求$y<em>{max}-y</em>{min}$。</p>
+<p>两个根式很烦人，自然想到平方，得：</p>
+<p>$y^2=3+2\sqrt{(x-1)(4-x)}$。</p>
+<p>对里面进行配方得：</p>
+<p>$y^2 = 3 + 2\sqrt{-(x-\frac{2}{5})^2+\frac{9}{4}}$，$3 \leq y^2 \leq 6$ ，$\sqrt{3} \leq y \leq \sqrt{6}$</p>
+<p>于是答案不言而喻——$\sqrt{6}-\sqrt{3}$</p>
+<p>$Q3:$求$\sqrt{x^2+4}+\sqrt{(4-x)^2+1}$的最小值。</p>
+<p>这怎么办？我们仔细观察，好像很多数和式子都蕴含着平方，而且还有平方和！还开根！自然想到勾股定理。</p>
+<p>我们可以画出图形：</p>
+<p><img src="https://s2.ax1x.com/2019/09/12/nDlAun.png" alt></p>
+<p>答案也不言而喻：$\sqrt{3^2+4^2}=5$</p>
+<h2 id="part3"><a href="#part3" class="headerlink" title="*part3"></a>*part3</h2><p>最值问题就这么简单吗？？？</p>
+<p><a href="https://apro1066.top/" target="_blank" rel="noopener">小A</a>给出了一道题，已知$x^2+y^2=9$，求$x+y$的最值。</p>
+<p>这怎么办？可以发现已知的式子非常有特点，是以原点为圆心，半径为$3$的圆的方程。</p>
+<p>那$x+y=\sin \theta + \cos \theta$</p>
+<p>用一下辅助角公式$x+y=3\sqrt{2} \sin (\theta + \phi)$</p>
+<p>$\therefore -3\sqrt{2} \leq x+y \leq 3\sqrt{2}$。</p>
+<p>可以发现，由于正弦、余弦函数一些特殊的取值范围，用它们求最值，也是个不错的方法。</p>
+<p>还是太简单？</p>
+<p>小A又给出了一道题，求$y=\sqrt{2-x}+\sqrt{3x+12}$的最值。</p>
+<p>参照上面两边平方的做法，好像不行。</p>
+<p>那对于这样的题目怎么办呢？</p>
+<p>方法一：求导</p>
+<p>导数是求极值最值单调性零点分布利器。用导数轻松求出最值。</p>
+<p>导数的定义这里不多说，自行百度学习。</p>
+<p>我们还知道函数$f(x)$点$(x_0,f(x_0)$的切线斜率是$f’(x_0)$。</p>
+<p>显然当斜率等于0时，我们就找到了极值。</p>
+<p>利用极值，我们就可以得到最值。</p>
+<p>于是我们再去看题。</p>
+<p>先求定义域，然后发现开根号就是$\frac{1}{2}$次方，接下来熟练地应用求导公式，令导函数等于零，化简一下，正好是三式相乘，求出极值，下面分析单调性或代入比大小都可以。</p>
+<p>过程比较无聊，不给出过程。</p>
+<p>答案是$2\sqrt{6}$。</p>
+<p>方法二：三角换元</p>
+<p>刚才我们讲了三角函数在取值范围上挺有特点。</p>
+<p>小A：那能不能用三角函数做呢？</p>
+<p>于是他进行了尝试，最后得出结论：可以！</p>
+<p>求出定义域$x \in [-4,2]$</p>
+<p>$\therefore 0 \leq x + 4 \leq 6$</p>
+<p>$\therefore 0 \leq \frac{x+4}{6} \leq 1$</p>
+<p>令$\sin ^ 2 \theta = \frac{x+4}{6} , \theta \in [0 , \frac{\pi}{2}]$</p>
+<p>$\therefore x = 6 \sin ^ 2 \theta - 4$</p>
+<p>$\therefore f(\theta) = \sqrt{6 - 6 \sin ^ 2 \theta} +\sqrt{3} \sqrt{6sin^2 \theta} = \sqrt{6} \cos \theta + 3\sqrt{2} \sin \theta = 2\sqrt{6}sin(\theta + \frac{\pi}{6})$</p>
+<p>$\because \theta + \frac{\pi}{6} \in [\frac{\pi}{6} , \frac{2\pi}{3}]$</p>
+<p>由正弦函数图像可知，$\sin x$在$x = \frac{\pi}{2}$时取得最大值$1$，即$f(\theta)_{max} = 2\sqrt{6}$</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://s2.ax1x.com/2019/03/16/AVbXO1.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -195,7 +282,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -208,282 +295,167 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/08/shuxuenote2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/08/shuxuenote2/" class="archive-article-date">
-  	<time datetime="2019-09-08T02:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/09/08/shuxuenote1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数学笔记1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/01/NOIPmuban/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NOIP考前模板练习汇总</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/shuxuenote2/">数学笔记2——代数最值</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-0"><span class="toc-number">1.</span> <span class="toc-text">Part 0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part1"><span class="toc-number">2.</span> <span class="toc-text">Part1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part2"><span class="toc-number">3.</span> <span class="toc-text">Part2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#part3"><span class="toc-number">4.</span> <span class="toc-text">*part3</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/shuxue1/" class="archive-article-date">
-  	<time datetime="2019-08-23T13:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/shuxue1/">An Interesting Math Problem</a>
-    </h1>
-  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shuxuenote2" data-title="数学笔记2——代数最值" data-url="http://yoursite.com/2019/09/08/shuxuenote2/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">三角函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/05/shenqidehezi/" class="archive-article-date">
-  	<time datetime="2019-08-05T12:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/05/shenqidehezi/">【AKOI2019】暑期欢乐模拟赛 T3 神奇的盒子 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">组合数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Lucas</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/20/wuliaodeshulie/" class="archive-article-date">
-  	<time datetime="2019-04-20T13:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/20/wuliaodeshulie/">洛谷 P1438 无聊的数列 代码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/代码//" class="article-tag-list-link color3">代码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/19/feibonaqishulie/" class="archive-article-date">
-  	<time datetime="2019-03-19T14:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/19/feibonaqishulie/">洛谷 P1962 斐波那契数列 代码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">矩阵乘法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/代码//" class="article-tag-list-link color3">代码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2019/09/08/shuxuenote2/", 
+    sourceId: "shuxuenote2",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+  <div id="SOHUCS" sid="shuxuenote2"></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "true",
+        conf: "true"
+    });
+</script>
+
+  
+
+  
+
+  
 
 
           </div>
@@ -506,9 +478,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
