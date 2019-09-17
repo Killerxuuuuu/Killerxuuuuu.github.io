@@ -188,7 +188,7 @@
 <p>这一题我们发现有分式，可以判断用二次函数应该不行了。那就尝试配方。</p>
 <p>原式$=(x-1)^2+(\sqrt{x}-\frac{1}{\sqrt{x}})^2+1$</p>
 <p>当$x=1$时，$y_{min}=1$</p>
-<p>$Q2:$已知$y=\sqrt{x-1}+\sqrt{4-x} (x,y \in R)$，求$y<em>{max}-y</em>{min}$。</p>
+<p>$Q2:$已知$y=\sqrt{x-1}+\sqrt{4-x} (x,y \in R)$，求$y$的最大值和最小值的差。</p>
 <p>两个根式很烦人，自然想到平方，得：</p>
 <p>$y^2=3+2\sqrt{(x-1)(4-x)}$。</p>
 <p>对里面进行配方得：</p>
@@ -213,7 +213,7 @@
 <p>方法一：求导</p>
 <p>导数是求极值最值单调性零点分布利器。用导数轻松求出最值。</p>
 <p>导数的定义这里不多说，自行百度学习。</p>
-<p>我们还知道函数$f(x)$点$(x_0,f(x_0)$的切线斜率是$f’(x_0)$。</p>
+<p>我们还知道函数$f(x)$点$(x_0,f(x_0))$的切线斜率是$f’(x_0)$。</p>
 <p>显然当斜率等于0时，我们就找到了极值。</p>
 <p>利用极值，我们就可以得到最值。</p>
 <p>于是我们再去看题。</p>
@@ -1719,20 +1719,5 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
