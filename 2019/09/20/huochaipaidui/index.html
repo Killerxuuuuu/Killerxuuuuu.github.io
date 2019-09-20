@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>洛谷 P1966 火柴排队 题解 | KillerXu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一道很有意思的思维题。 (有一些公式，加载需要时间) 题目链接 $\sum (ai - b_i)^2$，看着让人好生不爽。但是要求最小值，我们可以把平方去掉，变成求$(\sum |a_i - b_i|){min}$。 很容易想到，只要$a[i]$的第$k$大元素和$b[i]$的第$k$大元素在同一个位置即是最小值。 接下来离散化$a,b$，即把数字换成在数列中第$i$大。 $example:a[i">
+  <meta name="description" content="一道很有意思的思维题。 (有一些公式，加载需要时间) 题目链接 那个求和式子看着让人好生不爽。但是要求最小值，我们可以把平方去掉，变成求： (\sum |a_i - b_i|)_{min}。 很容易想到，只要$a[i]$的第$k$大元素和$b[i]$的第$k$大元素在同一个位置即是最小值。 接下来离散化$a,b$，即把数字换成在数列中第$i$大。 $example:a[i] = { 1,5,7,6">
 <meta name="keywords" content="NOIp提高组,归并排序,2013">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷 P1966 火柴排队 题解">
 <meta property="og:url" content="http://yoursite.com/2019/09/20/huochaipaidui/index.html">
 <meta property="og:site_name" content="KillerXu的博客">
-<meta property="og:description" content="一道很有意思的思维题。 (有一些公式，加载需要时间) 题目链接 $\sum (ai - b_i)^2$，看着让人好生不爽。但是要求最小值，我们可以把平方去掉，变成求$(\sum |a_i - b_i|){min}$。 很容易想到，只要$a[i]$的第$k$大元素和$b[i]$的第$k$大元素在同一个位置即是最小值。 接下来离散化$a,b$，即把数字换成在数列中第$i$大。 $example:a[i">
+<meta property="og:description" content="一道很有意思的思维题。 (有一些公式，加载需要时间) 题目链接 那个求和式子看着让人好生不爽。但是要求最小值，我们可以把平方去掉，变成求： (\sum |a_i - b_i|)_{min}。 很容易想到，只要$a[i]$的第$k$大元素和$b[i]$的第$k$大元素在同一个位置即是最小值。 接下来离散化$a,b$，即把数字换成在数列中第$i$大。 $example:a[i] = { 1,5,7,6">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-20T13:48:39.723Z">
+<meta property="og:updated_time" content="2019-09-20T14:08:38.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷 P1966 火柴排队 题解">
-<meta name="twitter:description" content="一道很有意思的思维题。 (有一些公式，加载需要时间) 题目链接 $\sum (ai - b_i)^2$，看着让人好生不爽。但是要求最小值，我们可以把平方去掉，变成求$(\sum |a_i - b_i|){min}$。 很容易想到，只要$a[i]$的第$k$大元素和$b[i]$的第$k$大元素在同一个位置即是最小值。 接下来离散化$a,b$，即把数字换成在数列中第$i$大。 $example:a[i">
+<meta name="twitter:description" content="一道很有意思的思维题。 (有一些公式，加载需要时间) 题目链接 那个求和式子看着让人好生不爽。但是要求最小值，我们可以把平方去掉，变成求： (\sum |a_i - b_i|)_{min}。 很容易想到，只要$a[i]$的第$k$大元素和$b[i]$的第$k$大元素在同一个位置即是最小值。 接下来离散化$a,b$，即把数字换成在数列中第$i$大。 $example:a[i] = { 1,5,7,6">
   
     <link rel="alternative" href="/atom.xml" title="KillerXu的博客" type="application/atom+xml">
   
@@ -182,7 +182,8 @@
         <p>一道很有意思的思维题。</p>
 <p>(有一些公式，加载需要时间)</p>
 <p><a href="https://www.luogu.org/problem/P1966" target="_blank" rel="noopener">题目链接</a></p>
-<p>$\sum (a<em>i - b_i)^2$，看着让人好生不爽。但是要求最小值，我们可以把平方去掉，变成求$(\sum |a_i - b_i|)</em>{min}$。</p>
+<p>那个求和式子看着让人好生不爽。但是要求最小值，我们可以把平方去掉，变成求：</p>
+<p><script type="math/tex">(\sum |a_i - b_i|)_{min}</script>。</p>
 <p>很容易想到，只要$a[i]$的第$k$大元素和$b[i]$的第$k$大元素在同一个位置即是最小值。</p>
 <p>接下来离散化$a,b$，即把数字换成在数列中第$i$大。</p>
 <p>$example:a[i] = { 1,5,7,6 }$，离散化后:$a[i] = { 1,2,4,3 }$。</p>
