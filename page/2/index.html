@@ -156,6 +156,114 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-shijianfuzadu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/24/shijianfuzadu/">洛谷 P3952 时间复杂度 题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/24/shijianfuzadu/" class="archive-article-date">
+  	<time datetime="2019-09-24T14:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.luogu.org/problem/P3952" target="_blank" rel="noopener">题目链接</a></p>
+<p>因为这道题导致半夜石乐志。。</p>
+<p>尽量排除个人情感讲这道题。模拟题首先应该先理清思路，看看需要做哪些事情。</p>
+<p>1、首先提高组选手应该有能力提取字符串中的信息，这一题可能有些麻烦，需要提取复杂度的次方，循环初始变量和结束变量，特别地，如果变量是$n$，返回一个大于100的数即可。</p>
+<p>2、我们先把错误的情况给判断了：</p>
+<p>(1)其实回头来想想，如果数据出现在某一段程序E比F多，这是错误情况，我并没有考虑，巧的是，并没有这样的数据。。。甚至洛谷的hack数据也没有。。。</p>
+<p>(2)如果F和E的个数不等是错的，这个不用多说怎么做了吧。。</p>
+<p>(3)如果重复调用变量则错误，这个怎么办？既然变量都是小写字母，我们可以开一个$vis$数组记录该变量是否用过。那怎样判断销毁的变量是什么呢？这里开一个栈就可以了，遇到F将变量入栈，遇到E则将栈顶变量出栈，再将$vis$改成为使用即可。</p>
+<p>3、我们怎样记录$n$的个数？首先，请注意如果初始和结束变量都是$n$，这是$\Theta(1)$的复杂度。那么排除这种情况，遇到$n$我们就可以计数。问题来了，这时遇到E，我们怎么知道结束的是带$n$的循环还是不带的呢？我们再开一个栈，如果是满足可以计数的情况，我们压一个东西进去（随便你，爱压啥压啥），不可以就压另一个东西进去。这个栈的栈指针和前一个栈总是处于同一个位置的，那么我们就可以判断，此时可以计数的循环是否已经结束，我们是不是要把次数复杂度减去1。</p>
+<p>4、初始变量大于结束变量该怎么办？这种情况显然这个循环下面嵌套的所有循环都不能走了，我们可以拿一个变量，遇到这种情况就加一，结束这种情况就减一，等于0我们再继续。但是什么时候减1呢？这是个问题，因为你下面还写了很多循环，你得知道哪个E是结束这个玩意的啊。我们巧妙的把前面的栈和这个变量结合一下，当前面栈指针，假设是$tot$，和这个变量相等了，我们就可以减1了。如果不理解，可以自己举个例子玩一玩。</p>
+<p>这4点想清楚，代码应该就可以出来了，再多注意细节即可。</p>
+<p>代码是可以通过的，但是不具有参考性，因为里面夹杂着一些没有用的语句，而且比较混乱。所以建议看懂上述思路以后自己动手写写，毕竟模拟题嘛。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sta[<span class="number">105</span>] , t = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">30</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> w = <span class="number">0</span> , x = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">if</span>(c == <span class="string">'n'</span>) <span class="keyword">return</span> <span class="number">200</span>;</span><br><span class="line">	<span class="keyword">while</span>(c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span>(c == <span class="string">'-'</span>) x = <span class="number">-1</span>; c = getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>) &#123;w = w * <span class="number">10</span> + (c - <span class="string">'0'</span>); c = getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> w * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> Theta[<span class="number">105</span>] , <span class="built_in">stack</span>[<span class="number">105</span>][<span class="number">2</span>] , tot = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> err = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">memset</span>(vis , <span class="number">0</span> , <span class="keyword">sizeof</span>(vis));</span><br><span class="line">	tot = t = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> L , fsum = <span class="number">0</span> , esum = <span class="number">0</span> , maxsum = <span class="number">0</span> , sum = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %s\n"</span> , &amp;L , Theta);</span><br><span class="line">	<span class="keyword">while</span>(L--)&#123;</span><br><span class="line">		<span class="keyword">char</span> sen[<span class="number">105</span>];</span><br><span class="line">		gets(sen);</span><br><span class="line">		<span class="keyword">if</span>(sen[<span class="number">0</span>] == <span class="string">'E'</span>)&#123;</span><br><span class="line">			esum++;</span><br><span class="line">			vis[<span class="built_in">stack</span>[tot][<span class="number">0</span>] - <span class="string">'a'</span>] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">stack</span>[tot][<span class="number">1</span>] == <span class="string">'A'</span>) <span class="keyword">if</span>(sum &gt; <span class="number">0</span>) maxsum = max(maxsum , sum) , sum--;</span><br><span class="line">			<span class="keyword">if</span>(tot &gt; <span class="number">0</span>) tot--; <span class="keyword">if</span>(tot + <span class="number">1</span> == t &amp;&amp; t &gt; <span class="number">0</span>) t--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			fsum++;</span><br><span class="line">			<span class="keyword">if</span>(vis[sen[<span class="number">2</span>] - <span class="string">'a'</span>]) &#123; err = <span class="number">1</span>; &#125;</span><br><span class="line">			<span class="keyword">int</span> a = <span class="number">0</span> , b = <span class="number">0</span> ,flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">4</span>; i &lt; <span class="built_in">strlen</span>(sen); i++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(flag == <span class="number">0</span>)&#123;</span><br><span class="line">					<span class="keyword">if</span>(sen[i] == <span class="string">'n'</span>) &#123; a = <span class="number">200</span>; flag = <span class="number">2</span>;&#125;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">if</span>(sen[i] &lt; <span class="string">'0'</span> || sen[i] &gt; <span class="string">'9'</span>) &#123; flag = <span class="number">1</span>;&#125;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					a = a * <span class="number">10</span> + (sen[i] - <span class="string">'0'</span>);</span><br><span class="line">					<span class="keyword">if</span>(flag == <span class="number">2</span>) i++;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">if</span>(sen[i] == <span class="string">'n'</span>) &#123; b = <span class="number">200</span>; &#125;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					b = b * <span class="number">10</span> + (sen[i] - <span class="string">'0'</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//cout &lt;&lt; a &lt;&lt; " " &lt;&lt; b &lt;&lt; "\n";</span></span><br><span class="line">			<span class="keyword">if</span>(a == <span class="number">200</span> &amp;&amp; b == <span class="number">200</span>) a = <span class="number">1</span> , b = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(a &gt; b) &#123; sta[++t] = <span class="number">2</span>; <span class="keyword">continue</span>; &#125;</span><br><span class="line">			<span class="keyword">if</span>(sta[t] == <span class="number">2</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(b == <span class="number">200</span>) sum++;</span><br><span class="line">			<span class="built_in">stack</span>[++tot][<span class="number">0</span>] = sen[<span class="number">2</span>];</span><br><span class="line">			vis[sen[<span class="number">2</span>] - <span class="string">'a'</span>] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(b == <span class="number">200</span>) <span class="built_in">stack</span>[tot][<span class="number">1</span>] = <span class="string">'A'</span>; <span class="keyword">else</span> <span class="built_in">stack</span>[tot][<span class="number">2</span>] = <span class="string">'B'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(err == <span class="number">1</span> || esum != fsum) &#123;<span class="built_in">printf</span>(<span class="string">"ERR\n"</span>); <span class="keyword">return</span>;&#125;</span><br><span class="line">	<span class="comment">//cout &lt;&lt; strlen(Theta) &lt;&lt; "\n";</span></span><br><span class="line">	<span class="keyword">if</span>(Theta[<span class="number">2</span>] == <span class="string">'1'</span> &amp;&amp; maxsum == <span class="number">0</span>) &#123;<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>); <span class="keyword">return</span>;&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">4</span>; i &lt; <span class="built_in">strlen</span>(Theta) - <span class="number">1</span>; i++) res = res * <span class="number">10</span> + (Theta[i] - <span class="string">'0'</span>);</span><br><span class="line">		<span class="comment">//cout &lt;&lt; res &lt;&lt; "\n";</span></span><br><span class="line">		<span class="keyword">if</span>(res == maxsum) &#123;<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>); <span class="keyword">return</span>;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//printf("%d\n" , maxsum);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d\n"</span> , &amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--) work();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">NOIp提高组</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2017</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/24/shijianfuzadu/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-huochaipaidui" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1114,96 +1222,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/08/22/Barn Painting/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Txinggupai" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/20/Txinggupai/">P1380 T型骨牌 题解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/20/Txinggupai/" class="archive-article-date">
-  	<time datetime="2019-08-20T10:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>非常非常恶心的一道题，最好的做法是花很短的时间写一个很暴力的搜索，把所有的答案都打表出来，因为这道题似乎没有很正确且时间优秀的剪枝方法。</p>
-<p>但是平时练习我们可以尝试一些不太严谨的剪枝。</p>
-<p>这道题不考虑剪枝还是很好写的，放完一个后就搜索下一个能放的点，维护最大值就行。$n$或$m$小于$3$特判输出$0$。</p>
-<p>然而会T 4个点。于是我开始尝试各种玄学的剪枝，最终发现只有这个方法可以AC：</p>
-<p>用$f[i][j]$记录到$(i,j)$这个位置最多能放多少，如果$step+1&lt;f[i][j]$就直接返回，但其实这个方法是存在一点问题的，所以会WA掉一个点，所以我们就再退一步，写成$step+2&lt;f[i][j]$。</p>
-<p>代码看着很长，但搜索那一段写完一个if可以复制粘贴，再改一改下标就可以了。</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 15</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n , m;</span><br><span class="line"><span class="keyword">int</span> vis[N][N] , f[N][N];</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> , <span class="keyword">int</span> , <span class="keyword">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span>)</span></span>;</span><br><span class="line">			</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">if</span>(n &lt; <span class="number">3</span>|| m &lt; <span class="number">3</span>)&#123;<span class="built_in">cout</span> &lt;&lt; <span class="number">0</span>; <span class="keyword">return</span> <span class="number">0</span>;&#125;<span class="comment">//特判</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;</span><br><span class="line">	 	<span class="built_in">memset</span>(vis , <span class="number">0</span> , <span class="keyword">sizeof</span>(vis));<span class="comment">//初始化</span></span><br><span class="line">	 	<span class="built_in">memset</span>(f , <span class="number">0</span> , <span class="keyword">sizeof</span>(f));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x = <span class="number">1</span>; x &lt;= n; x++) vis[x][<span class="number">0</span>] = vis[x][m + <span class="number">1</span>] = <span class="number">1</span>;<span class="comment">//把外面一圈都设为不能走，省的越界判断</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x = <span class="number">1</span>; x &lt;= m; x++) vis[<span class="number">0</span>][x] = vis[n + <span class="number">1</span>][x] = <span class="number">1</span>;</span><br><span class="line">	  	dfs(i , j , <span class="number">0</span>);</span><br><span class="line">	  &#125;</span><br><span class="line">	  </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span> , ans);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> y , <span class="keyword">int</span> step)</span></span>&#123;</span><br><span class="line">	<span class="comment">//cout &lt;&lt; x &lt;&lt; " " &lt;&lt; y &lt;&lt; " " &lt;&lt; step &lt;&lt; "\n";</span></span><br><span class="line">	<span class="keyword">if</span>(ans &lt; step) ans = step;<span class="comment">//更新答案</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= <span class="number">4</span>; k++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(k == <span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y - <span class="number">1</span>]) flag++;<span class="comment">//判断是否有足够的空间放下T</span></span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y + <span class="number">1</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x + <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x + <span class="number">2</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(flag == <span class="number">4</span>) vis[x][y - <span class="number">1</span>] = vis[x][y + <span class="number">1</span>] = vis[x + <span class="number">1</span>][y] = vis[x + <span class="number">2</span>][y] = <span class="number">1</span>; <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(f[x][y] &gt; step + <span class="number">2</span>) <span class="keyword">continue</span>;<span class="comment">//剪枝</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(f[x][y] &lt; step) f[x][y] = step;<span class="comment">//更新最大值</span></span><br><span class="line">			work(step);</span><br><span class="line">			vis[x][y - <span class="number">1</span>] = vis[x][y + <span class="number">1</span>] = vis[x + <span class="number">1</span>][y] = vis[x + <span class="number">2</span>][y] = <span class="number">0</span>;<span class="comment">//回溯</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(k == <span class="number">2</span>)&#123;<span class="comment">//k = 2,3,4的情况直接复制上面再简单改一改就行了</span></span><br><span class="line">			<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x + <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x - <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y - <span class="number">1</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y - <span class="number">2</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(flag == <span class="number">4</span>) vis[x + <span class="number">1</span>][y] = vis[x - <span class="number">1</span>][y] = vis[x][y - <span class="number">1</span>] = vis[x][y - <span class="number">2</span>] = <span class="number">1</span>; <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(f[x][y] &gt; step + <span class="number">2</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(f[x][y] &lt; step) f[x][y] = step;</span><br><span class="line">			work(step);</span><br><span class="line">			vis[x + <span class="number">1</span>][y] = vis[x - <span class="number">1</span>][y] = vis[x][y - <span class="number">1</span>] = vis[x][y - <span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(k == <span class="number">3</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y - <span class="number">1</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y + <span class="number">1</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x - <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x - <span class="number">2</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(flag == <span class="number">4</span>) vis[x][y - <span class="number">1</span>] = vis[x][y + <span class="number">1</span>] = vis[x - <span class="number">1</span>][y] = vis[x - <span class="number">2</span>][y] = <span class="number">1</span>; <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(f[x][y] &gt; step + <span class="number">2</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(f[x][y] &lt; step) f[x][y] = step;</span><br><span class="line">			work(step);</span><br><span class="line">			vis[x][y - <span class="number">1</span>] = vis[x][y + <span class="number">1</span>] = vis[x - <span class="number">1</span>][y] = vis[x - <span class="number">2</span>][y] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(k == <span class="number">4</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x + <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x - <span class="number">1</span>][y]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y + <span class="number">1</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(!vis[x][y + <span class="number">2</span>]) flag++;</span><br><span class="line">			<span class="keyword">if</span>(flag == <span class="number">4</span>) vis[x + <span class="number">1</span>][y] = vis[x - <span class="number">1</span>][y] = vis[x][y + <span class="number">1</span>] = vis[x][y + <span class="number">2</span>] = <span class="number">1</span>; <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(f[x][y] &gt; step + <span class="number">2</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(f[x][y] &lt; step) f[x][y] = step;</span><br><span class="line">			work(step);</span><br><span class="line">			vis[x + <span class="number">1</span>][y] = vis[x - <span class="number">1</span>][y] = vis[x][y + <span class="number">1</span>] = vis[x][y + <span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> step)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)<span class="comment">//枚举下一个能放的点</span></span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">	  <span class="keyword">if</span>(!vis[i][j]) dfs(i , j , step + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dfs;深度优先搜索</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/20/Txinggupai/">展开全文 >></a>
         </p>
       
 

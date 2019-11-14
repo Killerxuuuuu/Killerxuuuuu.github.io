@@ -156,6 +156,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-muban4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/14/muban4/">CSP模板代码 Part4</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/14/muban4/" class="archive-article-date">
+  	<time datetime="2019-11-14T14:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很可能这是近段时间最后一篇关于$OI$的文章了</p>
+<h2 id="高精度加、乘"><a href="#高精度加、乘" class="headerlink" title="高精度加、乘"></a>高精度加、乘</h2><p>重载运算符会比较方便。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 505</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bign</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> len , v[N];</span><br><span class="line">	bign()&#123; <span class="built_in">memset</span>(v , <span class="number">0</span> , <span class="keyword">sizeof</span>(v)); len = <span class="number">0</span>; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = len; i &gt;= <span class="number">1</span>; i--) <span class="built_in">printf</span>(<span class="string">"%d"</span> , v[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;a , b;</span><br><span class="line"></span><br><span class="line">bign <span class="keyword">operator</span> + (<span class="keyword">const</span> bign &amp;a , <span class="keyword">const</span> bign &amp;b) &#123;</span><br><span class="line">	bign c;</span><br><span class="line">	c.len = max(a.len , b.len);</span><br><span class="line">	<span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c.len; i++)&#123;</span><br><span class="line">		c.v[i] = a.v[i]	+ b.v[i] + t;</span><br><span class="line">		t = c.v[i] / <span class="number">10</span>;</span><br><span class="line">		c.v[i] %= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(t &gt; <span class="number">0</span>) c.v[++c.len] = t;</span><br><span class="line">	<span class="keyword">while</span>(c.v[c.len] == <span class="number">0</span> &amp;&amp; c.len &gt; <span class="number">1</span>) c.len--;</span><br><span class="line">	<span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bign <span class="keyword">operator</span> * (<span class="keyword">const</span> bign &amp;a , <span class="keyword">const</span> bign &amp;b)&#123;</span><br><span class="line">	bign c;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= a.len; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= b.len; j++)&#123;</span><br><span class="line">			c.v[i + j - <span class="number">1</span>] = a.v[i] * b.v[j] + x + c.v[i + j - <span class="number">1</span>];</span><br><span class="line">			x = c.v[i + j - <span class="number">1</span>] / <span class="number">10</span>;</span><br><span class="line">			c.v[i + j - <span class="number">1</span>] %= <span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		c.v[i + b.len] = x;</span><br><span class="line">	&#125;</span><br><span class="line">	c.len = a.len + b.len;</span><br><span class="line">	<span class="keyword">while</span>(c.v[c.len] == <span class="number">0</span> &amp;&amp; c.len &gt; <span class="number">1</span>) c.len--;</span><br><span class="line">	<span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	bign c;</span><br><span class="line">	<span class="built_in">string</span> s1 , s2;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; s1 &gt;&gt; s2;	</span><br><span class="line">	<span class="keyword">int</span> len1 = s1.length() , len2 = s2.length();</span><br><span class="line">	a.len = len1 , b.len = len2;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = len1 - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) a.v[len1 - i] = s1[i] - <span class="string">'0'</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = len2 - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) b.v[len2 - i] = s2[i] - <span class="string">'0'</span>;	</span><br><span class="line">	c = a + b;</span><br><span class="line">	</span><br><span class="line">	c.print();</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	</span><br><span class="line">	c = a * b;</span><br><span class="line">	</span><br><span class="line">	c.print();</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CSP2019</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/代码//" class="article-tag-list-link color3">代码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/14/muban4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-stl" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -987,114 +1073,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/10/08/dianhuahaoma/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-shijianfuzadu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/24/shijianfuzadu/">洛谷 P3952 时间复杂度 题解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/24/shijianfuzadu/" class="archive-article-date">
-  	<time datetime="2019-09-24T14:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.luogu.org/problem/P3952" target="_blank" rel="noopener">题目链接</a></p>
-<p>因为这道题导致半夜石乐志。。</p>
-<p>尽量排除个人情感讲这道题。模拟题首先应该先理清思路，看看需要做哪些事情。</p>
-<p>1、首先提高组选手应该有能力提取字符串中的信息，这一题可能有些麻烦，需要提取复杂度的次方，循环初始变量和结束变量，特别地，如果变量是$n$，返回一个大于100的数即可。</p>
-<p>2、我们先把错误的情况给判断了：</p>
-<p>(1)其实回头来想想，如果数据出现在某一段程序E比F多，这是错误情况，我并没有考虑，巧的是，并没有这样的数据。。。甚至洛谷的hack数据也没有。。。</p>
-<p>(2)如果F和E的个数不等是错的，这个不用多说怎么做了吧。。</p>
-<p>(3)如果重复调用变量则错误，这个怎么办？既然变量都是小写字母，我们可以开一个$vis$数组记录该变量是否用过。那怎样判断销毁的变量是什么呢？这里开一个栈就可以了，遇到F将变量入栈，遇到E则将栈顶变量出栈，再将$vis$改成为使用即可。</p>
-<p>3、我们怎样记录$n$的个数？首先，请注意如果初始和结束变量都是$n$，这是$\Theta(1)$的复杂度。那么排除这种情况，遇到$n$我们就可以计数。问题来了，这时遇到E，我们怎么知道结束的是带$n$的循环还是不带的呢？我们再开一个栈，如果是满足可以计数的情况，我们压一个东西进去（随便你，爱压啥压啥），不可以就压另一个东西进去。这个栈的栈指针和前一个栈总是处于同一个位置的，那么我们就可以判断，此时可以计数的循环是否已经结束，我们是不是要把次数复杂度减去1。</p>
-<p>4、初始变量大于结束变量该怎么办？这种情况显然这个循环下面嵌套的所有循环都不能走了，我们可以拿一个变量，遇到这种情况就加一，结束这种情况就减一，等于0我们再继续。但是什么时候减1呢？这是个问题，因为你下面还写了很多循环，你得知道哪个E是结束这个玩意的啊。我们巧妙的把前面的栈和这个变量结合一下，当前面栈指针，假设是$tot$，和这个变量相等了，我们就可以减1了。如果不理解，可以自己举个例子玩一玩。</p>
-<p>这4点想清楚，代码应该就可以出来了，再多注意细节即可。</p>
-<p>代码是可以通过的，但是不具有参考性，因为里面夹杂着一些没有用的语句，而且比较混乱。所以建议看懂上述思路以后自己动手写写，毕竟模拟题嘛。</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sta[<span class="number">105</span>] , t = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">30</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> w = <span class="number">0</span> , x = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">if</span>(c == <span class="string">'n'</span>) <span class="keyword">return</span> <span class="number">200</span>;</span><br><span class="line">	<span class="keyword">while</span>(c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span>(c == <span class="string">'-'</span>) x = <span class="number">-1</span>; c = getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>) &#123;w = w * <span class="number">10</span> + (c - <span class="string">'0'</span>); c = getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> w * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> Theta[<span class="number">105</span>] , <span class="built_in">stack</span>[<span class="number">105</span>][<span class="number">2</span>] , tot = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> err = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">memset</span>(vis , <span class="number">0</span> , <span class="keyword">sizeof</span>(vis));</span><br><span class="line">	tot = t = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> L , fsum = <span class="number">0</span> , esum = <span class="number">0</span> , maxsum = <span class="number">0</span> , sum = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %s\n"</span> , &amp;L , Theta);</span><br><span class="line">	<span class="keyword">while</span>(L--)&#123;</span><br><span class="line">		<span class="keyword">char</span> sen[<span class="number">105</span>];</span><br><span class="line">		gets(sen);</span><br><span class="line">		<span class="keyword">if</span>(sen[<span class="number">0</span>] == <span class="string">'E'</span>)&#123;</span><br><span class="line">			esum++;</span><br><span class="line">			vis[<span class="built_in">stack</span>[tot][<span class="number">0</span>] - <span class="string">'a'</span>] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">stack</span>[tot][<span class="number">1</span>] == <span class="string">'A'</span>) <span class="keyword">if</span>(sum &gt; <span class="number">0</span>) maxsum = max(maxsum , sum) , sum--;</span><br><span class="line">			<span class="keyword">if</span>(tot &gt; <span class="number">0</span>) tot--; <span class="keyword">if</span>(tot + <span class="number">1</span> == t &amp;&amp; t &gt; <span class="number">0</span>) t--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			fsum++;</span><br><span class="line">			<span class="keyword">if</span>(vis[sen[<span class="number">2</span>] - <span class="string">'a'</span>]) &#123; err = <span class="number">1</span>; &#125;</span><br><span class="line">			<span class="keyword">int</span> a = <span class="number">0</span> , b = <span class="number">0</span> ,flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">4</span>; i &lt; <span class="built_in">strlen</span>(sen); i++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(flag == <span class="number">0</span>)&#123;</span><br><span class="line">					<span class="keyword">if</span>(sen[i] == <span class="string">'n'</span>) &#123; a = <span class="number">200</span>; flag = <span class="number">2</span>;&#125;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">if</span>(sen[i] &lt; <span class="string">'0'</span> || sen[i] &gt; <span class="string">'9'</span>) &#123; flag = <span class="number">1</span>;&#125;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					a = a * <span class="number">10</span> + (sen[i] - <span class="string">'0'</span>);</span><br><span class="line">					<span class="keyword">if</span>(flag == <span class="number">2</span>) i++;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">if</span>(sen[i] == <span class="string">'n'</span>) &#123; b = <span class="number">200</span>; &#125;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					b = b * <span class="number">10</span> + (sen[i] - <span class="string">'0'</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//cout &lt;&lt; a &lt;&lt; " " &lt;&lt; b &lt;&lt; "\n";</span></span><br><span class="line">			<span class="keyword">if</span>(a == <span class="number">200</span> &amp;&amp; b == <span class="number">200</span>) a = <span class="number">1</span> , b = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(a &gt; b) &#123; sta[++t] = <span class="number">2</span>; <span class="keyword">continue</span>; &#125;</span><br><span class="line">			<span class="keyword">if</span>(sta[t] == <span class="number">2</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(b == <span class="number">200</span>) sum++;</span><br><span class="line">			<span class="built_in">stack</span>[++tot][<span class="number">0</span>] = sen[<span class="number">2</span>];</span><br><span class="line">			vis[sen[<span class="number">2</span>] - <span class="string">'a'</span>] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(b == <span class="number">200</span>) <span class="built_in">stack</span>[tot][<span class="number">1</span>] = <span class="string">'A'</span>; <span class="keyword">else</span> <span class="built_in">stack</span>[tot][<span class="number">2</span>] = <span class="string">'B'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(err == <span class="number">1</span> || esum != fsum) &#123;<span class="built_in">printf</span>(<span class="string">"ERR\n"</span>); <span class="keyword">return</span>;&#125;</span><br><span class="line">	<span class="comment">//cout &lt;&lt; strlen(Theta) &lt;&lt; "\n";</span></span><br><span class="line">	<span class="keyword">if</span>(Theta[<span class="number">2</span>] == <span class="string">'1'</span> &amp;&amp; maxsum == <span class="number">0</span>) &#123;<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>); <span class="keyword">return</span>;&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">4</span>; i &lt; <span class="built_in">strlen</span>(Theta) - <span class="number">1</span>; i++) res = res * <span class="number">10</span> + (Theta[i] - <span class="string">'0'</span>);</span><br><span class="line">		<span class="comment">//cout &lt;&lt; res &lt;&lt; "\n";</span></span><br><span class="line">		<span class="keyword">if</span>(res == maxsum) &#123;<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>); <span class="keyword">return</span>;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//printf("%d\n" , maxsum);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d\n"</span> , &amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--) work();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">NOIp提高组</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2017</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/24/shijianfuzadu/">展开全文 >></a>
         </p>
       
 
