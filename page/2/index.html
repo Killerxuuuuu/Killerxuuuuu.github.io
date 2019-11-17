@@ -156,6 +156,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-dianhuahaoma" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/08/dianhuahaoma/">洛谷 P1245 电话号码 题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/08/dianhuahaoma/" class="archive-article-date">
+  	<time datetime="2019-10-08T14:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.luogu.org/problem/P1245" target="_blank" rel="noopener">题目链接</a></p>
+<p>再次被字符串迫害。</p>
+<p>首先，我们可以先把单词转换成数字，不妨复制粘贴九个判断语句，这样既不用动脑子也防止不必要的出锅。</p>
+<p>然后我们用map映射一下，把转换后的每个单词映射成为这个单词的下标，这样既方便之后的判断，也方便了最后输出给转化回来。</p>
+<p>开始搜索，传三个参数，一个代表下标，一个代表着已经选中的、没有转换成一个单词的字母个数，一个代表已经有几个单词出现了。</p>
+<p>如果已经搜完整个密码，且密码已经全部转化为单词即输出并结束。没有的话，我们就判断已经选中的字母能否组成一个单词。能，则记入答案数组，并重新计算被选中字母个数。</p>
+<p>最后，不管能不能组成一个单词，我们都要去搜不组成单词的情况。</p>
+<p>因为数据较小，不需要太多的技巧。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 105</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n , Len;</span><br><span class="line"><span class="keyword">char</span> key[N] , word[N][<span class="number">25</span>];<span class="comment">//key记录密码，word记录单词 </span></span><br><span class="line"><span class="keyword">char</span> Copy[N]; </span><br><span class="line"><span class="built_in">map</span> &lt; <span class="built_in">string</span> , <span class="keyword">int</span> &gt; m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deal</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="comment">//将单词转化为数字 </span></span><br><span class="line">	<span class="built_in">strcpy</span>(Copy , word[x]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(Copy); i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(word[x][i] &gt;= <span class="string">'a'</span> &amp;&amp; Copy[i] &lt;= <span class="string">'c'</span>) Copy[i] = <span class="string">'1'</span>;</span><br><span class="line">		<span class="keyword">if</span>(word[x][i] &gt;= <span class="string">'d'</span> &amp;&amp; Copy[i] &lt;= <span class="string">'f'</span>) Copy[i] = <span class="string">'2'</span>;</span><br><span class="line">		<span class="keyword">if</span>(word[x][i] &gt;= <span class="string">'g'</span> &amp;&amp; Copy[i] &lt;= <span class="string">'i'</span>) Copy[i] = <span class="string">'3'</span>;</span><br><span class="line">		<span class="keyword">if</span>(word[x][i] &gt;= <span class="string">'j'</span> &amp;&amp; Copy[i] &lt;= <span class="string">'l'</span>) Copy[i] = <span class="string">'4'</span>;</span><br><span class="line">		<span class="keyword">if</span>(word[x][i] &gt;= <span class="string">'m'</span> &amp;&amp; Copy[i] &lt;= <span class="string">'n'</span>) Copy[i] = <span class="string">'5'</span>;</span><br><span class="line">		<span class="keyword">if</span>(word[x][i] &gt;= <span class="string">'o'</span> &amp;&amp; Copy[i] &lt;= <span class="string">'q'</span>) Copy[i] = <span class="string">'6'</span>;</span><br><span class="line">		<span class="keyword">if</span>(word[x][i] &gt;= <span class="string">'r'</span> &amp;&amp; Copy[i] &lt;= <span class="string">'t'</span>) Copy[i] = <span class="string">'7'</span>;</span><br><span class="line">		<span class="keyword">if</span>(word[x][i] &gt;= <span class="string">'u'</span> &amp;&amp; Copy[i] &lt;= <span class="string">'w'</span>) Copy[i] = <span class="string">'8'</span>;</span><br><span class="line">		<span class="keyword">if</span>(word[x][i] &gt;= <span class="string">'x'</span> &amp;&amp; Copy[i] &lt;= <span class="string">'z'</span>) Copy[i] = <span class="string">'9'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	m[Copy] = x;<span class="comment">//映射 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> flag = <span class="literal">false</span>;<span class="comment">//用来判断是否已经有了答案 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> ans[N][<span class="number">25</span>];<span class="comment">//记录答案 </span></span><br><span class="line"><span class="keyword">char</span> t[<span class="number">25</span>];<span class="comment">//辅助数组 </span></span><br><span class="line"><span class="keyword">int</span> h = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> tot)</span></span>&#123;<span class="comment">//打印答案 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>  , word[m[ans[i]]]);<span class="comment">//这里的输出好好想一想 </span></span><br><span class="line">		<span class="keyword">if</span>(i != tot) <span class="built_in">printf</span>(<span class="string">" "</span>);<span class="comment">//spj对空格敏感 </span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> L , <span class="keyword">int</span> tot)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x == Len + <span class="number">1</span> &amp;&amp; L == <span class="number">1</span> &amp;&amp; !flag)&#123;<span class="comment">//满足结束的条件 </span></span><br><span class="line">		flag = <span class="literal">true</span>;</span><br><span class="line">		print(tot);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(x == Len + <span class="number">1</span>) <span class="keyword">return</span>;<span class="comment">//不管满不满足输出的条件，搜完了就返回 </span></span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(t,<span class="string">'\0'</span>,<span class="keyword">sizeof</span>(t));<span class="comment">//记得清空 </span></span><br><span class="line">	h = <span class="number">-1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = x - L + <span class="number">1</span>; i &lt;= x; i++) t[++h] = key[i];<span class="comment">//把选中的字母复制给辅助数组 </span></span><br><span class="line">	<span class="keyword">if</span>(m[t])&#123;<span class="comment">//如果有这个单词 </span></span><br><span class="line">		<span class="built_in">strcpy</span>(ans[tot + <span class="number">1</span>] , t);<span class="comment">//再复制给答案数组 </span></span><br><span class="line">		dfs(x + <span class="number">1</span> , <span class="number">1</span> , tot + <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	 </span><br><span class="line">	dfs(x + <span class="number">1</span> , L + <span class="number">1</span> , tot);</span><br><span class="line">	 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span> , &amp;n);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span> , key);</span><br><span class="line">	Len = <span class="built_in">strlen</span>(key) - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span> , word[i]);</span><br><span class="line">		deal(i);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	dfs(<span class="number">0</span> , <span class="number">1</span> , <span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(!flag) <span class="built_in">printf</span>(<span class="string">"No Solutions!"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dfs;深度优先搜索</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">搜索</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/08/dianhuahaoma/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-shijianfuzadu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1124,104 +1220,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/08/23/shuxue1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Barn Painting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/22/Barn Painting/">洛谷 P4084 [USACO17DEC]Barn Painting 题解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/22/Barn Painting/" class="archive-article-date">
-  	<time datetime="2019-08-22T08:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.luogu.org/problem/P4084" target="_blank" rel="noopener">题目链接</a></p>
-<p>正当我准备从洛谷博客里复制这篇题解时，洛谷的博客页面就崩了，30秒前还是好的。</p>
-<p>于是我只能把公式源码重新敲一遍。</p>
-<p>很基础的一道树形dp。</p>
-<p>设$f[i][j]$表示 以染第$j$种颜色的节点为根的子树的染色方案数。</p>
-<script type="math/tex; mode=display">f[i][1]=\prod (f[son][2]+f[son][3])</script><script type="math/tex; mode=display">f[i][2]=\prod (f[son][1]+f[son][3])</script><script type="math/tex; mode=display">f[i][3]=\prod (f[son][1]+f[son][2])</script><p>具体实现，把1号节点作为整棵树的根，然后先递归下去赋初值1，合并时转移方程。注意不管是赋初值还是转移方程，都要判断这个点是否是那$K$个已经染过色的节点，如果已经染过色，仅对$j=$这个颜色 的情况进行操作。</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000007</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> f[N][<span class="number">4</span>];</span><br><span class="line"><span class="keyword">int</span> n , k;</span><br><span class="line"><span class="keyword">int</span> val[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to , next;</span><br><span class="line">&#125;edge[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> head[N] , tot = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u , <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    edge[++tot].to = v;</span><br><span class="line">    edge[tot].next = head[u];</span><br><span class="line">    head[u] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++) <span class="keyword">if</span>(val[x] == i || !val[x]) f[x][i] = <span class="number">1</span>;<span class="comment">//赋初值 </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = edge[i].next)&#123;<span class="comment">//向下递归 </span></span><br><span class="line">        <span class="keyword">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(v == fa) <span class="keyword">continue</span>;<span class="comment">//注意连向父亲的边不能去 </span></span><br><span class="line">        dfs(v , x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = edge[i].next)&#123;<span class="comment">//合并答案 </span></span><br><span class="line">        <span class="keyword">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(v == fa) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>(val[x] == <span class="number">1</span> || !val[x]) f[x][<span class="number">1</span>] = (f[x][<span class="number">1</span>] * (f[v][<span class="number">2</span>] + f[v][<span class="number">3</span>]) % mod) % mod;<span class="comment">//转移 </span></span><br><span class="line">        <span class="keyword">if</span>(val[x] == <span class="number">2</span> || !val[x]) f[x][<span class="number">2</span>] = (f[x][<span class="number">2</span>] * (f[v][<span class="number">1</span>] + f[v][<span class="number">3</span>]) % mod) % mod;</span><br><span class="line">        <span class="keyword">if</span>(val[x] == <span class="number">3</span> || !val[x]) f[x][<span class="number">3</span>] = (f[x][<span class="number">3</span>] * (f[v][<span class="number">1</span>] + f[v][<span class="number">2</span>]) % mod) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span> , &amp;n , &amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u , v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span> , &amp;u , &amp;v);</span><br><span class="line">        add(u , v);</span><br><span class="line">        add(v , u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> p , c;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span> , &amp;p , &amp;c);</span><br><span class="line">        val[p] = c;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dfs(<span class="number">1</span> , <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld"</span> , (f[<span class="number">1</span>][<span class="number">1</span>] + f[<span class="number">1</span>][<span class="number">2</span>] + f[<span class="number">1</span>][<span class="number">3</span>]) % mod);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dfs;深度优先搜索</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">树形动规</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/22/Barn Painting/">展开全文 >></a>
         </p>
       
 
