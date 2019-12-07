@@ -162,6 +162,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jinzita" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/08/jinzita/">洛谷 P2349 金字塔 题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/08/jinzita/" class="archive-article-date">
+  	<time datetime="2019-10-08T14:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.luogu.org/problem/P2349" target="_blank" rel="noopener">题目链接</a></p>
+<p>数据这么小，不搜索可惜了。搜索时统计路径长度和 和 最大路径的值就好了。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 105</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 2005</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to , next , val;</span><br><span class="line">&#125;edge[M &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> head[N] , tot = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n , m;</span><br><span class="line"><span class="keyword">int</span> vis[N] , ans = <span class="number">0x7fffffff</span>;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u , <span class="keyword">int</span> v , <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">	edge[++tot].to = v;</span><br><span class="line">	edge[tot].val = d;</span><br><span class="line">	edge[tot].next = head[u];</span><br><span class="line">	head[u] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> Max , <span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(sum + Max &gt;= ans) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(x == n)&#123;</span><br><span class="line">		ans = min(ans , sum + Max);<span class="comment">//维护答案 </span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	vis[x] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = edge[i].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> v = edge[i].to;</span><br><span class="line">		<span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>; </span><br><span class="line">		<span class="keyword">int</span> nMax = Max;</span><br><span class="line">		<span class="keyword">if</span>(edge[i].val &gt; Max) nMax = edge[i].val;<span class="comment">//维护最大值 </span></span><br><span class="line">		dfs(v , nMax , sum + edge[i].val);</span><br><span class="line">	&#125;</span><br><span class="line">	vis[x] = <span class="number">0</span>;<span class="comment">//回溯 </span></span><br><span class="line">&#125;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> u , v , d;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span> , &amp;u , &amp;v , &amp;d);</span><br><span class="line">		add(u , v , d);</span><br><span class="line">		add(v , u , d);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	dfs(<span class="number">1</span> , <span class="number">0</span> , <span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dfs;深度优先搜索</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">搜索</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/08/jinzita/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-dianhuahaoma" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1101,131 +1195,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/08/28/Divide by three, multiply by two/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-shuxue1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/23/shuxue1/">An Interesting Math Problem</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/23/shuxue1/" class="archive-article-date">
-  	<time datetime="2019-08-23T13:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这一题无关信息学（或许也有那么一点关系）</p>
-<h2 id="为什么会写这篇文章"><a href="#为什么会写这篇文章" class="headerlink" title="为什么会写这篇文章"></a>为什么会写这篇文章</h2><p>没事翻大视野，突然看见一行瞩目的大字（其实很小）：北京大学自主招生试题。然后抱着试试看的态度，就做了做。然后发现是一道很不错的也不算太难的趣题，于是就来分享一下这道题。</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>是否$\exists x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。</p>
-<h2 id="从一个简单的问题入手"><a href="#从一个简单的问题入手" class="headerlink" title="从一个简单的问题入手"></a>从一个简单的问题入手</h2><p>证明一个数是否为有理数，这个事情我们应该有经验。</p>
-<p>人教版数学书七下就教过我们证明$\sqrt{2}$ 是无理数。我们简单回顾一下：</p>
-<p>解：假设$\sqrt{2}$为有理数,</p>
-<p>则一定有$p,q$，使$\sqrt{2} = \frac{p}{q} \ \ (p,q \in Z,\ \gcd(p,q)=1)$,</p>
-<p>$\therefore 2q^2=p^2$.</p>
-<p>$\because p^2$为偶数,$\therefore p$为偶数.</p>
-<p>令$p=2s$,则$p^2=4s^2$,</p>
-<p>$\therefore q^2=2s^2,(s \in Z)$</p>
-<p>$\therefore q$为偶数,</p>
-<p>$\therefore \gcd(p,q)≠1$,矛盾,</p>
-<p>$\therefore \sqrt{2}$不是有理数,</p>
-<p>$\therefore \sqrt{2}$是无理数.</p>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>有了上面的经验，现在重新审视这道题，我们已经有了些思路，照葫芦画瓢先写写看：</p>
-<p>解：假设$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$为有理数,</p>
-<p>则一定有$p,q,s,t$,使$\tan x + \sqrt{3}=\frac{p}{q},\cot x + \sqrt{3}=\frac{s}{t}$，其中$p,q,s,t \in Z,\gcd(p,q)=\gcd(s,t)=1$,</p>
-<p>则$\tan x = \frac{p}{q} - \sqrt{3},\cot x = \frac{s}{t} - \sqrt{3}$,</p>
-<p>两式相乘、化简得：$ps+2qt=\sqrt{3}(pt+sq)$,</p>
-<p>$\because ps+2qt$和$pt+sq$为有理数,</p>
-<p>$\therefore pt+sq = 0$,(否则等式右边是无理数，而左边是有理数，矛盾)</p>
-<p>$\therefore ps+2qt=0$.</p>
-<p>写到这里，没有花费我太多的时间，但是接下来的式子变换就很迷，很显然我们要求$\frac{p}{q}$，以目前的条件看着已经足够，但是对于字母一多就乱的我，变成了一件很难的事。</p>
-<p>于是我去翻了答案。。。瞄了一眼就感觉自己很sb。</p>
-<p>继续写：</p>
-<p>$\therefore sq = -pt,ps=-2qt$,</p>
-<p>$\therefore psq = -2q^2t$,</p>
-<p>$\because t ≠ 0$</p>
-<p>$\therefore -p^2=-2q^2$,</p>
-<p>$\therefore \frac{p^2}{q^2}=2$,</p>
-<p>$\therefore \frac{p}{q} = \pm \sqrt{2}$，矛盾，</p>
-<p>故不存在$x \in R$，使得$\tan x + \sqrt{3}$和$\cot x + \sqrt{3}$均为有理数。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>写公式真累。。。</p>
-<p>类似于这样的题目不妨先考虑反证法，最后只要能证明题设不成立即可。</p>
-<p>（自招遇到这种题目心里估计也要MMP）</p>
-<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><p>2019.8.25 对证明进行了完善，补充公式。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">三角函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/23/shuxue1/">展开全文 >></a>
         </p>
       
 
