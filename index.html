@@ -190,9 +190,9 @@
 <li><p>求 $(n - m)$ 个 $i$ 都满足 $a[i] ≠ i$ 的方法数 $Y$。</p>
 </li>
 </ul>
-<p>显然，答案满足乘法原理，为 $X \dot Y$。</p>
+<p>显然，答案满足乘法原理，为 $XY$。</p>
 <p>我们先求 $X$，这显然就是在求从 $n$ 个数中选出 $m$ 个数的组合数，也就是 $C_{n}^{m}$。</p>
-<p>再求 $Y$，这显然是个错排问题，结论是 $D<em>{n} = (n - 1)(D</em>{n - 1} + D_{n - 2})$，这里简单证明。</p>
+<p>再求 $Y$，这显然是个错排问题，这里简单证明。</p>
 <p>首先我们有：</p>
 <script type="math/tex; mode=display">D_1 = 0,D_2 = 1</script><p>当我们放第 $n$ 个数时，有除 $n$ 位置的 $(n - 1)$ 个位置供我们放，假设这个数你放在了 $k$ 位置即 $a[k] = n$，那么 $k$ 这个数有两种放的方式：</p>
 <ul>
@@ -1681,5 +1681,20 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

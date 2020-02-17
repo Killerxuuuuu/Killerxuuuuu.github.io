@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>洛谷 P4071 [SDOI2016]排列计数 题解 | KillerXu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目大意：问有多少个数字为 $1-n$ 的排列，满足恰好有 $m$ 个 $i(i \in [1 , n])$ 有 $a[i] = i$。 首先我们很容易想到把问题拆成两个：  求 $m$ 个 $i$ 都满足 $a[i] = i$ 的方法数 $X$。  求 $(n - m)$ 个 $i$ 都满足 $a[i] ≠ i$ 的方法数 $Y$。   显然，答案满足乘法原理，为 $X \dot Y$。 我们先">
+  <meta name="description" content="题目大意：问有多少个数字为 $1-n$ 的排列，满足恰好有 $m$ 个 $i(i \in [1 , n])$ 有 $a[i] = i$。 首先我们很容易想到把问题拆成两个：  求 $m$ 个 $i$ 都满足 $a[i] = i$ 的方法数 $X$。  求 $(n - m)$ 个 $i$ 都满足 $a[i] ≠ i$ 的方法数 $Y$。   显然，答案满足乘法原理，为 $XY$。 我们先求 $X$，">
 <meta name="keywords" content="数论;数学,组合数学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷 P4071 [SDOI2016]排列计数 题解">
 <meta property="og:url" content="http://yoursite.com/2020/02/17/pailiejishu/index.html">
 <meta property="og:site_name" content="KillerXu的博客">
-<meta property="og:description" content="题目大意：问有多少个数字为 $1-n$ 的排列，满足恰好有 $m$ 个 $i(i \in [1 , n])$ 有 $a[i] = i$。 首先我们很容易想到把问题拆成两个：  求 $m$ 个 $i$ 都满足 $a[i] = i$ 的方法数 $X$。  求 $(n - m)$ 个 $i$ 都满足 $a[i] ≠ i$ 的方法数 $Y$。   显然，答案满足乘法原理，为 $X \dot Y$。 我们先">
+<meta property="og:description" content="题目大意：问有多少个数字为 $1-n$ 的排列，满足恰好有 $m$ 个 $i(i \in [1 , n])$ 有 $a[i] = i$。 首先我们很容易想到把问题拆成两个：  求 $m$ 个 $i$ 都满足 $a[i] = i$ 的方法数 $X$。  求 $(n - m)$ 个 $i$ 都满足 $a[i] ≠ i$ 的方法数 $Y$。   显然，答案满足乘法原理，为 $XY$。 我们先求 $X$，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-17T02:53:04.221Z">
+<meta property="og:updated_time" content="2020-02-17T02:56:58.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷 P4071 [SDOI2016]排列计数 题解">
-<meta name="twitter:description" content="题目大意：问有多少个数字为 $1-n$ 的排列，满足恰好有 $m$ 个 $i(i \in [1 , n])$ 有 $a[i] = i$。 首先我们很容易想到把问题拆成两个：  求 $m$ 个 $i$ 都满足 $a[i] = i$ 的方法数 $X$。  求 $(n - m)$ 个 $i$ 都满足 $a[i] ≠ i$ 的方法数 $Y$。   显然，答案满足乘法原理，为 $X \dot Y$。 我们先">
+<meta name="twitter:description" content="题目大意：问有多少个数字为 $1-n$ 的排列，满足恰好有 $m$ 个 $i(i \in [1 , n])$ 有 $a[i] = i$。 首先我们很容易想到把问题拆成两个：  求 $m$ 个 $i$ 都满足 $a[i] = i$ 的方法数 $X$。  求 $(n - m)$ 个 $i$ 都满足 $a[i] ≠ i$ 的方法数 $Y$。   显然，答案满足乘法原理，为 $XY$。 我们先求 $X$，">
   
     <link rel="alternative" href="/atom.xml" title="KillerXu的博客" type="application/atom+xml">
   
@@ -193,9 +193,9 @@
 <li><p>求 $(n - m)$ 个 $i$ 都满足 $a[i] ≠ i$ 的方法数 $Y$。</p>
 </li>
 </ul>
-<p>显然，答案满足乘法原理，为 $X \dot Y$。</p>
+<p>显然，答案满足乘法原理，为 $XY$。</p>
 <p>我们先求 $X$，这显然就是在求从 $n$ 个数中选出 $m$ 个数的组合数，也就是 $C_{n}^{m}$。</p>
-<p>再求 $Y$，这显然是个错排问题，结论是 $D<em>{n} = (n - 1)(D</em>{n - 1} + D_{n - 2})$，这里简单证明。</p>
+<p>再求 $Y$，这显然是个错排问题，这里简单证明。</p>
 <p>首先我们有：</p>
 <script type="math/tex; mode=display">D_1 = 0,D_2 = 1</script><p>当我们放第 $n$ 个数时，有除 $n$ 位置的 $(n - 1)$ 个位置供我们放，假设这个数你放在了 $k$ 位置即 $a[k] = n$，那么 $k$ 这个数有两种放的方式：</p>
 <ul>
@@ -933,5 +933,20 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
