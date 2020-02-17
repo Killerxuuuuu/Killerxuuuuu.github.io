@@ -162,6 +162,109 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-juzhenqushuyouxi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/23/juzhenqushuyouxi/">洛谷 P1005 矩阵取数游戏 代码</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/23/juzhenqushuyouxi/" class="archive-article-date">
+  	<time datetime="2019-03-23T13:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一听就会，一做就废。这一题一行一行处理就行了，方程很好推。。集训时老师正好讲了重载运算符来写高精，不过实际操作起来非常麻烦。</p>
+<p>方程：</p>
+<p>$f[i][j]=max(f[i][j],f[i-1][j]+2^{m-i+j}×v[i],f[i][j-1]+2^{m-i+j}×v[j])$</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXM 100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 10000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> a[MAXM];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bign</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> len,v[<span class="number">505</span>];</span><br><span class="line">    bign()&#123;<span class="built_in">memset</span>(v,<span class="number">0</span>,<span class="keyword">sizeof</span> v); len=<span class="number">0</span>;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,v[len]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v[i]==<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"0000"</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">10</span>;j*v[i]&lt;mod;j*=<span class="number">10</span>)</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"0"</span>);</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"%d"</span>,v[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">    </span><br><span class="line">bign <span class="keyword">operator</span> + (<span class="keyword">const</span> bign &amp;a,<span class="keyword">const</span> bign &amp;b)&#123;</span><br><span class="line">    bign c; c.len=max(a.len,b.len);</span><br><span class="line">    <span class="keyword">int</span> t=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=c.len;i++)&#123;</span><br><span class="line">        c.v[i]=a.v[i]+b.v[i]+t;</span><br><span class="line">        t=c.v[i]/mod;</span><br><span class="line">        c.v[i]%=mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t&gt;<span class="number">0</span>) c.v[++c.len]=t;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">bign <span class="keyword">operator</span> * (<span class="keyword">const</span> bign &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)&#123;</span><br><span class="line">    bign c; c.len=a.len; <span class="keyword">int</span> t=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=c.len;i++)&#123;</span><br><span class="line">        c.v[i]=a.v[i]*b+t;</span><br><span class="line">        t=c.v[i]/mod;</span><br><span class="line">        c.v[i]%=mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(t&gt;<span class="number">0</span>) &#123;c.v[++c.len]=t%mod; t/=mod;&#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function">bign <span class="title">max</span><span class="params">(<span class="keyword">const</span> bign &amp;a,<span class="keyword">const</span> bign &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.len&gt;b.len) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">if</span>(a.len&lt;b.len) <span class="keyword">return</span> b;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=a.len;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a.v[i]&gt;b.v[i]) <span class="keyword">return</span> a;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">if</span>(a.v[i]&lt;b.v[i]) <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">bign f[MAXM][MAXM],sum,power[MAXM];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">power_work</span><span class="params">()</span></span>&#123;</span><br><span class="line">    power[<span class="number">0</span>].v[<span class="number">1</span>]=<span class="number">1</span>,power[<span class="number">0</span>].len=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m+<span class="number">2</span>;i++) power[i]=power[i<span class="number">-1</span>]*<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    power_work();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> T=<span class="number">1</span>;T&lt;=n;T++)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(f,<span class="number">0</span>,<span class="keyword">sizeof</span> f);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j=m;j&gt;=i;j--)&#123;</span><br><span class="line">     	f[i][j]=max(f[i][j],max(f[i<span class="number">-1</span>][j]+power[m-(j-i)<span class="number">-1</span>]*a[i<span class="number">-1</span>],f[i][j+<span class="number">1</span>]+power[m-(j-i)<span class="number">-1</span>]*a[j+<span class="number">1</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        bign maxn;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) maxn=max(maxn,f[i][i]+power[m]*a[i]);</span><br><span class="line">        sum=sum+maxn;</span><br><span class="line">  &#125;</span><br><span class="line">    sum.print();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">NOIp提高组</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">区间dp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">高精</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2007</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/代码//" class="article-tag-list-link color3">代码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/23/juzhenqushuyouxi/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-feibonaqishulie" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1018,97 +1121,6 @@
 
 
   
-    <article id="post-hongyanchuanshu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/hongyanchuanshu/">题解 洛谷 P2112 【鸿雁传书】</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/15/hongyanchuanshu/" class="archive-article-date">
-  	<time datetime="2019-03-15T13:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>既然不能把情书中的单词拆开，那么每个单词就是独立的，我们只要去探究每个单词的长度，换行我们直接理解为分段就可以了。</p>
-<p>于是题意其实就是给出一个有$n$个数的数列，将这个数列分成$k$段，使每一段所有数的总和方差最小。</p>
-<p>这道题我们考虑dp，显然我们的子问题就是把前$i$个数分成$j$段，每一段所有数的总和方差最小，状态应由$i$前面所有的数分成$j-1$段的最好结果转移过来。</p>
-<p>可以写出转移方程了：</p>
-<p>设$f[i][j]$表示前$i$个数分成$j$段，最小的每一段所有数总和的方差。</p>
-<p>$f[i][j]=min(f[i][j],f[l][j-1]+sum(i,l))$</p>
-<p>其中$1≤l≤i-1$,$sum(i,l)$表示从$i$到$l$这一段数的和减去平均数的平方再除以$k$，实际操作时可以用前缀和。答案最后在$f[n][k]$里。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXK 105</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,k;</span><br><span class="line"><span class="keyword">double</span> a[MAXN],f[MAXN][MAXK];<span class="comment">//a[i]表示第i个单词的长度 </span></span><br><span class="line"><span class="keyword">double</span> s[MAXN];<span class="comment">//s是前缀和数组 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="keyword">double</span> ave=<span class="number">0</span>;<span class="comment">//记录平均数 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">char</span> str[<span class="number">25</span>];</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str);<span class="comment">//读入单词（全是x） </span></span><br><span class="line">		a[i]=<span class="built_in">strlen</span>(str);<span class="comment">//记录单词长度 </span></span><br><span class="line">		ave+=a[i];<span class="comment">//累加起来好算平均数 </span></span><br><span class="line">		s[i]=s[i<span class="number">-1</span>]+a[i];<span class="comment">//计算前缀和 </span></span><br><span class="line">	&#125;</span><br><span class="line">	ave/=k;<span class="comment">//算出平均数</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=k;j++)</span><br><span class="line">	  f[i][j]=<span class="number">0x7fffffff</span>;<span class="comment">//除了第一列，其他地方都初始化成最大值 </span></span><br><span class="line">	  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) f[i][<span class="number">1</span>]=(s[i]-ave)*(s[i]-ave)/k;<span class="comment">//分成一段的最小值直接计算出方差就行了 </span></span><br><span class="line">	  </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=k;j++)<span class="comment">//分成一段不用处理了，直接从分成两段开始处理 </span></span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">int</span> i=j;i&lt;=n;i++)<span class="comment">//前面i个数最多也只能分成i段，所以如果j&gt;i就不行 </span></span><br><span class="line">	  <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>;l&lt;=i<span class="number">-1</span>;l++) </span><br><span class="line">	   f[i][j]=min(f[i][j],f[l][j<span class="number">-1</span>]+(s[i]-s[l]-ave)*(s[i]-s[l]-ave)/k);<span class="comment">//转移方程 </span></span><br><span class="line">	   </span><br><span class="line">	    <span class="built_in">printf</span>(<span class="string">"%.1lf"</span>,f[n][k]);<span class="comment">//输出即可 </span></span><br><span class="line">	  </span><br><span class="line">	   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/15/hongyanchuanshu/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1620,20 +1632,5 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
