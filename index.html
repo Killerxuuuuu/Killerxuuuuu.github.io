@@ -168,6 +168,144 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-shuxuenote3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/shuxuenote3/">数学笔记3.1——放缩法证求和型不等式</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/shuxuenote3/" class="archive-article-date">
+  	<time datetime="2020-03-06T14:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part -1"></a>Part -1</h2><p>这一块的内容写成博客就算是挑战我自己一下了，并不能保证不出锅或者讲的很严谨，运用的思路和想法大多来自于学而思赖昊老师（i老师）。</p>
+<p>大量公式，请等待加载。</p>
+<h2 id="Part-0-——-什么是放缩"><a href="#Part-0-——-什么是放缩" class="headerlink" title="Part 0 —— 什么是放缩"></a>Part 0 —— 什么是放缩</h2><p>我们引用一下百度百科：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">放缩法是指要让不等式A&lt;B成立，有时可以将它的一边放大或缩小，寻找一个中间量，如将A放大成C，即A&lt;C，后证C&lt;B，这种方法便是放缩法。</span><br></pre></td></tr></table></figure>
+<p>我们在学习导数的时候（我并不确定学的时候会不会讲），应该都知道一个很基本的放缩不等式：</p>
+<script type="math/tex; mode=display">e^x - 1 \ge x \ge \ln x+1</script><p>证明也不算难，求一下导就比较明了了。</p>
+<p>那么我们为什么要使用放缩呢？</p>
+<p>对于一些不等式，我们会发现我们很难去严格证明，左边和右边看起来似乎无法有机结合时，不妨去考虑使用放缩法，即去找一个中间媒介，使得它与左边可以有机结合，与右边也可以。当然放缩法非常讲究技术，比较玄学，需要勤加练习。</p>
+<h2 id="Part-1-1"><a href="#Part-1-1" class="headerlink" title="Part 1"></a>Part 1</h2><p>直接上题：</p>
+<hr>
+<p>已知函数 $f(x) = \ln(1 + x) - x,g(x) = \ln(1 + x) - \dfrac{x}{x + 1}$.</p>
+<p>(1) 求函数 $f(x),g(x)$ 的单调性.</p>
+<p>(2) 证明不等式:</p>
+<script type="math/tex; mode=display">\sum^{n + 1}_{i = 2} \dfrac{1}{i} < \ln(n + 1) < \sum^{n}_{i = 1} \dfrac{1}{i}</script><hr>
+<p>首先第一问很简单，不再赘述，答案是 $f(x)$在 $(-1 , 0)$ 单调递增，在 $(0 , +\infty)$ 单调递减，$g(x)$ 在 $(-1 , 0)$ 单调递减，在 $(0 , +\infty)$ 单调递增。</p>
+<p>主要看第 (2) 问。首先我们想到，既然有第 (1) 问，我们就要能白嫖点信息，显然 $f(x) \ge f(0) = 0,g(x) \ge g(0) = 0$，也就是 $\dfrac{x}{x+1}\le \ln(x+1) \le x$。</p>
+<p>两个式子的等号均在 $x = 0$ 取得。</p>
+<p>现在我们发现了一个情况，这个不等式两边的求和 和 中间的对数看起来丝毫没有关系，于是我们想到放缩。</p>
+<p>那么怎么放缩呢？</p>
+<p>这里先说结论，对于从前一问得出来的不等式，我们令 $x = \dfrac{1}{n}$，得到：</p>
+<script type="math/tex; mode=display">\dfrac{n}{n + 1} \le \ln(1+\dfrac{1}{n}) = \ln( \dfrac{n + 1}{n} )= \ln(n + 1) - \ln n \le \dfrac{1}{n}</script><p>我们开始放缩，对于左边：</p>
+<script type="math/tex; mode=display">\sum^{n + 1}_{i = 2} \dfrac{1}{i} \le \sum^{n}_{i = 1} [\ln(i + 1) - \ln i] = \ln(n+1)</script><p>对于右边：</p>
+<script type="math/tex; mode=display">\sum^{n}_{i = 1} \dfrac{1}{i} \ge \sum^{n}_{i = 1} [\ln(i + 1) - \ln i] = \ln(n+1)</script><p>根据取等条件可知两个不等式均不可取等，证毕。</p>
+<p>我们肯定很疑惑，为什么只有代 $\dfrac{1}{n}$ 进去，才能行之有效呢？</p>
+<p>答案是：</p>
+<h2 id="通过观察"><a href="#通过观察" class="headerlink" title="通过观察"></a>通过观察</h2><p>于是我们知道了第一个放缩方法：观察法。</p>
+<p>但是这种方法未免过于玄学，看技术的同时还得看脸，有没有更好的方法呢？</p>
+<h2 id="Part2-——-放缩法代入值的奇淫技巧"><a href="#Part2-——-放缩法代入值的奇淫技巧" class="headerlink" title="Part2 —— 放缩法代入值的奇淫技巧"></a>Part2 —— 放缩法代入值的奇淫技巧</h2><p>首先我们用 Part1 的解题过程来寻找寻找规律，我们可以抽象出两个式子：</p>
+<script type="math/tex; mode=display">\sum_{i = 1} ^{n} a_i < f(n)</script><script type="math/tex; mode=display">\sum_{i = 1} ^{n - 1} a_i < f(n - 1)</script><p>作差得：</p>
+<script type="math/tex; mode=display">a_n < f(n) - f(n - 1)</script><p>我们在上面的解题过程中，就是把每一个单项式给放缩成这样，然后作个和，邻项相消就解决了问题。</p>
+<p>于是，我们就可以通过所证式子，推出你要放缩成的式子，再根据放缩成的式子，代入值，然后反过来去推。注意，实际过程体现时，无需体现寻找的过程，因为一方面不写也不会扣分，另一方面这个方法有局限性，很有可能翻车，所以写在自己的草稿纸上就好了。</p>
+<p>回到 Part1 的题目，我们就可以用上述方法直接找出 $a_n \le \ln(n + 1) - \ln n$，然后倒推：</p>
+<script type="math/tex; mode=display">\ln(n+1) - \ln n = \ln(\dfrac{n + 1}{n}) = \ln(1 + \dfrac{1}{n})</script><p>于是我们就知道了代入 $\dfrac{1}{n}$ 可以解决问题。</p>
+<h2 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h2><hr>
+<p>已知函数 $f(x) = e^x - ax - a$</p>
+<p>(1) 讨论函数 $f(x)$ 的单调性.</p>
+<p>(2) 设 $n \in N^*$,证明:</p>
+<script type="math/tex; mode=display">\sum_{i = 1}^{n} (\dfrac{1}{n})^n < \dfrac{e}{e - 1}</script><hr>
+<p>第一问很简单，当 $a \le 0$，$f(x)$ 单调递增，当 $a &gt; 0$，$f(x)$ 在 $(-\infty,\ln a)$ 上单调递减，在 $(\ln a,+\infty)$ 单调递增。</p>
+<p>我们尝试用上面的套路去解第二问。</p>
+<p>由 (1) 可知：</p>
+<script type="math/tex; mode=display">e^x \ge x + 1(x \in N^*）</script><p>然后你突然发现，这个不等式按上面的方法作差没有任何作用！</p>
+<p>于是，Part2 奇淫技巧失效。</p>
+<p>留给我们的只剩观察法了，我们想想带什么值进去可以达到我们的目的。</p>
+<p>我们看到所要证明的式子带有 $n$ 次方，于是我们把放缩不等式也 $n$ 次方一下，得到 $(x + 1)^n \le (e^x)^n$。再观察，有形如 $\dfrac{k}{n}$ 的形式，那我们试试令 $x = \dfrac{k}{n}$，那么：</p>
+<script type="math/tex; mode=display">(\dfrac{k}{n})^n \le (e^{\frac{k}{n} - 1})^n = e^{k - n} = \dfrac{e^k}{e^n}</script><p>诶，不错，挺靠近了，我们先放缩一下试试：</p>
+<script type="math/tex; mode=display">\sum_{i = 1}^{n} (\dfrac{1}{i})^n \le \sum_{i = 1}^{n} \dfrac{e^i}{e^n} = \dfrac{1}{e^n} \sum_{i = 1} ^ n e^i</script><p>我们发现，提取 $e^n$ 过后，后面这个求和式子的每一项构成了公比为 $e$ 的等比数列，上求和公式：</p>
+<script type="math/tex; mode=display">\dfrac{1}{e^n} \sum_{i = 1} ^ n e^i = \dfrac{1}{e^n} \dot \dfrac{e(1 - e^n)}{1 - e}</script><p>应该比较容易看出来是小于 $\dfrac{e}{e - 1}$的，证毕。</p>
+<p>这道题我们纯属是用观察的方法去找到最后要代入的值，但是我们也并非瞎猜，而是朝着目标有目的的代，最后我们还顺水推舟的进行了第二次放缩，非常的精妙。</p>
+<p>这类无法使用奇淫技巧的题目对我们的要求显然是更高了，对此，我只能说：</p>
+<h2 id="Practice-makes-perfect"><a href="#Practice-makes-perfect" class="headerlink" title="Practice makes perfect"></a>Practice makes perfect</h2><h2 id="Part-4-——-补充说明"><a href="#Part-4-——-补充说明" class="headerlink" title="Part 4 —— 补充说明"></a>Part 4 —— 补充说明</h2><p>对于上面那道题，肯定有人疑惑在白嫖第 (1) 问的条件时，为什么要让 $a = 1$。</p>
+<p>关于这一点，实际上也是一个小的技巧，对于前一问证什么取值范围之类的，后一问来放缩的，一般最后都要把那个值给设成前一问取值范围的临界点。至于上一问，让 $a = 1$ 是因为能得到一个显然的基本放缩不等式。</p>
+<p>总结下来，这就是：</p>
+<h2 id="命题规律"><a href="#命题规律" class="headerlink" title="命题规律"></a>命题规律</h2><p>3.2 还是导数，玄学更新。</p>
+<h2 id="to-be-continued"><a href="#to-be-continued" class="headerlink" title="to be continued"></a>to be continued</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/shuxuenote3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pailiejishu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1062,91 +1200,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/11/14/muban4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-stl" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/13/stl/">CSP常用 stl</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/13/stl/" class="archive-article-date">
-  	<time datetime="2019-11-13T14:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大概比较常用的$stl$都在这了</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">stack</span> &lt; <span class="keyword">int</span> &gt; s;</span><br><span class="line"><span class="built_in">map</span> &lt; <span class="built_in">string</span> , <span class="keyword">int</span> &gt; m;</span><br><span class="line"><span class="built_in">set</span> &lt; <span class="keyword">int</span> &gt; S;</span><br><span class="line"><span class="built_in">vector</span> &lt; <span class="keyword">int</span> &gt; a;</span><br><span class="line"><span class="built_in">queue</span> &lt; <span class="keyword">int</span> &gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	s.push(<span class="number">1</span>);</span><br><span class="line">	s.push(<span class="number">2</span>);</span><br><span class="line">	s.push(<span class="number">3</span>);</span><br><span class="line">	s.push(<span class="number">5</span>);</span><br><span class="line">	s.push(<span class="number">7</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"The number of the numbers in the stack:"</span> &lt;&lt; s.size() &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	<span class="keyword">while</span>(!s.empty()) &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"stack_output:"</span> &lt;&lt; s.top() &lt;&lt; <span class="string">" "</span>; s.pop(); &#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\n"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"The example of the map:\n"</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"wwz -&gt; 1 , AK -&gt; 2 , IOI -&gt; 3\n"</span>;</span><br><span class="line">	m[<span class="string">"wwz"</span>] = <span class="number">1</span>;</span><br><span class="line">	m[<span class="string">"AK"</span>] = <span class="number">2</span>;</span><br><span class="line">	m[<span class="string">"IOI"</span>] = <span class="number">3</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"wwz AK IOI = "</span> &lt;&lt; m[<span class="string">"wwz"</span>] &lt;&lt; <span class="string">" "</span> &lt;&lt; m[<span class="string">"AK"</span>] &lt;&lt; <span class="string">" "</span> &lt;&lt; m[<span class="string">"IOI"</span>] &lt;&lt; <span class="string">"\n\n"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Now Let's have a look at the queue:\n"</span>;</span><br><span class="line">	q.push(<span class="number">2</span>);</span><br><span class="line">	q.push(<span class="number">3</span>);</span><br><span class="line">	q.push(<span class="number">4</span>);</span><br><span class="line">	q.push(<span class="number">2</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"The number of the numbers in the queue:"</span> &lt;&lt; q.size() &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty()) &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"queue_output:"</span> &lt;&lt; q.front() &lt;&lt; <span class="string">" "</span>; q.pop(); &#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\n"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"And priority_queue:\n"</span>;</span><br><span class="line">	priority_queue &lt; <span class="keyword">int</span> &gt; Q;</span><br><span class="line">	Q.push(<span class="number">3</span>);</span><br><span class="line">	Q.push(<span class="number">2</span>);</span><br><span class="line">	Q.push(<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"The number of the numbers in the priority_queue:"</span> &lt;&lt; Q.size() &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	<span class="keyword">while</span>(!Q.empty()) &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"priority_queue_output:"</span> &lt;&lt; Q.top() &lt;&lt; <span class="string">" "</span>; Q.pop(); &#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\n"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"vector:\n"</span>;</span><br><span class="line">	a.push_back(<span class="number">1</span>);</span><br><span class="line">	a.push_back(<span class="number">2</span>);</span><br><span class="line">	a.push_back(<span class="number">3</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); i++) <span class="built_in">cout</span> &lt;&lt; <span class="string">"vector_output:"</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\n"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"set:\n"</span>;</span><br><span class="line">	<span class="built_in">set</span> &lt; <span class="keyword">int</span> &gt; :: iterator it;</span><br><span class="line">	<span class="built_in">set</span> &lt; <span class="keyword">int</span> &gt; :: iterator it2;</span><br><span class="line">	S.insert(<span class="number">1</span>);</span><br><span class="line">	S.insert(<span class="number">1</span>);</span><br><span class="line">	S.insert(<span class="number">2</span>);</span><br><span class="line">	S.insert(<span class="number">3</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"The number of the numbers in the set:"</span> &lt;&lt; S.size() &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	<span class="keyword">for</span>(it = S.begin(); it != S.end(); it++) <span class="built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	it = it2 = S.begin(); it2 ++; it2 ++;</span><br><span class="line">	S.erase(it , it2);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"When we erase the first number and the second number:\n"</span>;</span><br><span class="line">	<span class="keyword">for</span>(it = S.begin(); it != S.end(); it++) <span class="built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	S.insert(<span class="number">8</span>); S.insert(<span class="number">10</span>); S.insert(<span class="number">15</span>); S.insert(<span class="number">20</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"The first number in the set that more than 8:"</span> &lt;&lt; *S.upper_bound(<span class="number">8</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"lower_bound??:"</span> &lt;&lt; *S.lower_bound(<span class="number">8</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CSP2019</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/代码//" class="article-tag-list-link color3">代码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/13/stl/">展开全文 >></a>
         </p>
       
 
