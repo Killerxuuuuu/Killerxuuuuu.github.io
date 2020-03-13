@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="KillerXu的博客">
 <meta property="og:description" content="Part -1这一块的内容写成博客就算是挑战我自己一下了，并不能保证不出锅或者讲的很严谨，运用的思路和想法大多来自于学而思赖昊老师（i老师）。 大量公式，请等待加载。 Part 0 —— 什么是放缩我们引用一下百度百科： 1放缩法是指要让不等式A&amp;lt;B成立，有时可以将它的一边放大或缩小，寻找一个中间量，如将A放大成C，即A&amp;lt;C，后证C&amp;lt;B，这种方法便是放缩法。 我们在学习导数的时候">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-13T14:30:19.053Z">
+<meta property="og:updated_time" content="2020-03-13T14:34:17.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数学笔记3.1——放缩法证求和型不等式">
 <meta name="twitter:description" content="Part -1这一块的内容写成博客就算是挑战我自己一下了，并不能保证不出锅或者讲的很严谨，运用的思路和想法大多来自于学而思赖昊老师（i老师）。 大量公式，请等待加载。 Part 0 —— 什么是放缩我们引用一下百度百科： 1放缩法是指要让不等式A&amp;lt;B成立，有时可以将它的一边放大或缩小，寻找一个中间量，如将A放大成C，即A&amp;lt;C，后证C&amp;lt;B，这种方法便是放缩法。 我们在学习导数的时候">
@@ -238,7 +238,7 @@
 <p>我们看到所要证明的式子带有 $n$ 次方，于是我们把放缩不等式也 $n$ 次方一下，得到 $(x + 1)^n \le (e^x)^n$。再观察，有形如 $\dfrac{k}{n}$ 的形式，那我们试试令 $x = \dfrac{k}{n}$，那么：</p>
 <script type="math/tex; mode=display">(\dfrac{k}{n})^n \le (e^{\frac{k}{n} - 1})^n = e^{k - n} = \dfrac{e^k}{e^n}</script><p>诶，不错，挺靠近了，我们先放缩一下试试：</p>
 <script type="math/tex; mode=display">\sum_{i = 1}^{n} (\dfrac{1}{i})^n \le \sum_{i = 1}^{n} \dfrac{e^i}{e^n} = \dfrac{1}{e^n} \sum_{i = 1} ^ n e^i</script><p>我们发现，提取 $e^n$ 过后，后面这个求和式子的每一项构成了公比为 $e$ 的等比数列，上求和公式：</p>
-<script type="math/tex; mode=display">\dfrac{1}{e^n} \sum_{i = 1} ^ n e^i = \dfrac{1}{e^n} \dot \dfrac{e(1 - e^n)}{1 - e}</script><p>应该比较容易看出来是小于 $\dfrac{e}{e - 1}$的，证毕。</p>
+<script type="math/tex; mode=display">\dfrac{1}{e^n} \sum_{i = 1} ^ n e^i = \dfrac{1}{e^n} \times \dfrac{e(1 - e^n)}{1 - e}</script><p>应该比较容易看出来是小于 $\dfrac{e}{e - 1}$的，证毕。</p>
 <p>这道题我们纯属是用观察的方法去找到最后要代入的值，但是我们也并非瞎猜，而是朝着目标有目的的代，最后我们还顺水推舟的进行了第二次放缩，非常的精妙。</p>
 <p>这类无法使用奇淫技巧的题目对我们的要求显然是更高了，对此，我只能说：</p>
 <h2 id="Practice-makes-perfect"><a href="#Practice-makes-perfect" class="headerlink" title="Practice makes perfect"></a>Practice makes perfect</h2><h2 id="Part-4-——-补充说明"><a href="#Part-4-——-补充说明" class="headerlink" title="Part 4 —— 补充说明"></a>Part 4 —— 补充说明</h2><p>对于上面那道题，肯定有人疑惑在白嫖第 (1) 问的条件时，为什么要让 $a = 1$。</p>
