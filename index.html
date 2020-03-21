@@ -306,6 +306,111 @@
 
 
   
+    <article id="post-shuxuenote3.2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/shuxuenote3.2/">数学笔记3.2——隐零点</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/shuxuenote3.2/" class="archive-article-date">
+  	<time datetime="2020-03-06T14:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><p>有这样一天，小明在数学考试中，历经千辛万苦，终于来到了压轴大题，这道题是这样的：</p>
+<hr>
+<h2 id="设函数-f-x-dfrac-1-ln-x-1-x-x-gt-0-若-f-x-gt-dfrac-k-x-1-恒成立，求正整数-k-的最大值。"><a href="#设函数-f-x-dfrac-1-ln-x-1-x-x-gt-0-若-f-x-gt-dfrac-k-x-1-恒成立，求正整数-k-的最大值。" class="headerlink" title="设函数 $f(x) = \dfrac{1 + \ln(x + 1)}{x} (x &gt; 0)$,若 $f(x) &gt; \dfrac{k}{x + 1}$ 恒成立，求正整数 $k$ 的最大值。"></a>设函数 $f(x) = \dfrac{1 + \ln(x + 1)}{x} (x &gt; 0)$,若 $f(x) &gt; \dfrac{k}{x + 1}$ 恒成立，求正整数 $k$ 的最大值。</h2><p>当时他嘴都笑歪了，这不就是简单的恒成立问题吗？</p>
+<p>于是开始做：</p>
+<p>首先这是个恒成立问题，我们显然需要满足 $(\dfrac{(x + 1)[1 + \ln(x + 1)]}{x})_{\min} &gt; k$。</p>
+<p>那我们记$g(x) = \dfrac{(x + 1)[1 + \ln(x + 1)]}{x},$</p>
+<p>则:</p>
+<script type="math/tex; mode=display">g'(x) = \dfrac{[2 + \ln(x + 1)]x - (x + 1)[1 + \ln (x + 1)]}{x^2} = \dfrac{x - \ln(x + 1) - 1}{x^2}</script><p>没错，现在只需要令 $g’(x) = 0$ 解方程就行了。</p>
+<p>小明很得意，他知道自己离满分不远了，但他重新打量方程的时候——</p>
+<h2 id="完了，出大问题。"><a href="#完了，出大问题。" class="headerlink" title="完了，出大问题。"></a>完了，出大问题。</h2><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2><p>这个方程没办法解！</p>
+<p>有对数，是超越方程，而且猜根根本猜不到！</p>
+<p>但是小明岂是无名之辈，他用原始人的直觉知道要做这件事：</p>
+<p>记 $h(x) = x - \ln (x + 1) - 1$，</p>
+<script type="math/tex; mode=display">h'(x) = 1 - \dfrac{1}{x + 1} = \dfrac{x}{x + 1} > 0</script><p>所以 $h(x)$ 在 (0 , +\infty) 单调递增。</p>
+<p>爱思考的小明想到，平时求恒成立的问题我们都要去找出准确根，那么我们能否只知道根的范围，而去解决呢？</p>
+<p>开始尝试：</p>
+<p>既然 $h(x)$ 是单调递增的，那么我们应该能找到零点的大致位置。</p>
+<p>怎么找？</p>
+<p>——一个一个试。</p>
+<p>我们从 $0$ 开始，试啊试，我们发现：</p>
+<p>$h(2) = 1 - \ln 2 &lt; 0,h(3) 2 - \ln 4 &gt; 0$</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/shuxuenote3.2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pailiejishu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1143,92 +1248,6 @@
 
 
   
-    <article id="post-muban4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/14/muban4/">CSP模板代码 Part4</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/14/muban4/" class="archive-article-date">
-  	<time datetime="2019-11-14T14:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>很可能这是近段时间最后一篇关于$OI$的文章了</p>
-<h2 id="高精度加、乘"><a href="#高精度加、乘" class="headerlink" title="高精度加、乘"></a>高精度加、乘</h2><p>重载运算符会比较方便。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 505</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bign</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> len , v[N];</span><br><span class="line">	bign()&#123; <span class="built_in">memset</span>(v , <span class="number">0</span> , <span class="keyword">sizeof</span>(v)); len = <span class="number">0</span>; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = len; i &gt;= <span class="number">1</span>; i--) <span class="built_in">printf</span>(<span class="string">"%d"</span> , v[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;a , b;</span><br><span class="line"></span><br><span class="line">bign <span class="keyword">operator</span> + (<span class="keyword">const</span> bign &amp;a , <span class="keyword">const</span> bign &amp;b) &#123;</span><br><span class="line">	bign c;</span><br><span class="line">	c.len = max(a.len , b.len);</span><br><span class="line">	<span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c.len; i++)&#123;</span><br><span class="line">		c.v[i] = a.v[i]	+ b.v[i] + t;</span><br><span class="line">		t = c.v[i] / <span class="number">10</span>;</span><br><span class="line">		c.v[i] %= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(t &gt; <span class="number">0</span>) c.v[++c.len] = t;</span><br><span class="line">	<span class="keyword">while</span>(c.v[c.len] == <span class="number">0</span> &amp;&amp; c.len &gt; <span class="number">1</span>) c.len--;</span><br><span class="line">	<span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bign <span class="keyword">operator</span> * (<span class="keyword">const</span> bign &amp;a , <span class="keyword">const</span> bign &amp;b)&#123;</span><br><span class="line">	bign c;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= a.len; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= b.len; j++)&#123;</span><br><span class="line">			c.v[i + j - <span class="number">1</span>] = a.v[i] * b.v[j] + x + c.v[i + j - <span class="number">1</span>];</span><br><span class="line">			x = c.v[i + j - <span class="number">1</span>] / <span class="number">10</span>;</span><br><span class="line">			c.v[i + j - <span class="number">1</span>] %= <span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		c.v[i + b.len] = x;</span><br><span class="line">	&#125;</span><br><span class="line">	c.len = a.len + b.len;</span><br><span class="line">	<span class="keyword">while</span>(c.v[c.len] == <span class="number">0</span> &amp;&amp; c.len &gt; <span class="number">1</span>) c.len--;</span><br><span class="line">	<span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	bign c;</span><br><span class="line">	<span class="built_in">string</span> s1 , s2;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; s1 &gt;&gt; s2;	</span><br><span class="line">	<span class="keyword">int</span> len1 = s1.length() , len2 = s2.length();</span><br><span class="line">	a.len = len1 , b.len = len2;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = len1 - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) a.v[len1 - i] = s1[i] - <span class="string">'0'</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = len2 - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) b.v[len2 - i] = s2[i] - <span class="string">'0'</span>;	</span><br><span class="line">	c = a + b;</span><br><span class="line">	</span><br><span class="line">	c.print();</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	</span><br><span class="line">	c = a * b;</span><br><span class="line">	</span><br><span class="line">	c.print();</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CSP2019</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/代码//" class="article-tag-list-link color3">代码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/14/muban4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1584,6 +1603,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">2008</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">状压dp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">状态压缩</a>
               </li>
             
             <div class="clearfix"></div>
