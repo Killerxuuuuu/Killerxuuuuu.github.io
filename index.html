@@ -417,111 +417,6 @@
 
 
   
-    <article id="post-shuxuenote3.2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/shuxuenote3.2/">数学笔记3.2——隐零点</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/shuxuenote3.2/" class="archive-article-date">
-  	<time datetime="2020-03-06T14:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><p>有这样一天，小明在数学考试中，历经千辛万苦，终于来到了压轴大题，这道题是这样的：</p>
-<hr>
-<h2 id="设函数-f-x-dfrac-1-ln-x-1-x-x-gt-0-若-f-x-gt-dfrac-k-x-1-恒成立，求正整数-k-的最大值。"><a href="#设函数-f-x-dfrac-1-ln-x-1-x-x-gt-0-若-f-x-gt-dfrac-k-x-1-恒成立，求正整数-k-的最大值。" class="headerlink" title="设函数 $f(x) = \dfrac{1 + \ln(x + 1)}{x} (x &gt; 0)$,若 $f(x) &gt; \dfrac{k}{x + 1}$ 恒成立，求正整数 $k$ 的最大值。"></a>设函数 $f(x) = \dfrac{1 + \ln(x + 1)}{x} (x &gt; 0)$,若 $f(x) &gt; \dfrac{k}{x + 1}$ 恒成立，求正整数 $k$ 的最大值。</h2><p>当时他嘴都笑歪了，这不就是简单的恒成立问题吗？</p>
-<p>于是开始做：</p>
-<p>首先这是个恒成立问题，我们显然需要满足 $(\dfrac{(x + 1)[1 + \ln(x + 1)]}{x})_{\min} &gt; k$。</p>
-<p>那我们记$g(x) = \dfrac{(x + 1)[1 + \ln(x + 1)]}{x},$</p>
-<p>则:</p>
-<script type="math/tex; mode=display">g'(x) = \dfrac{[2 + \ln(x + 1)]x - (x + 1)[1 + \ln (x + 1)]}{x^2} = \dfrac{x - \ln(x + 1) - 1}{x^2}</script><p>没错，现在只需要令 $g’(x) = 0$ 解方程就行了。</p>
-<p>小明很得意，他知道自己离满分不远了，但他重新打量方程的时候——</p>
-<h2 id="完了，出大问题。"><a href="#完了，出大问题。" class="headerlink" title="完了，出大问题。"></a>完了，出大问题。</h2><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2><p>这个方程没办法解！</p>
-<p>有对数，是超越方程，而且猜根根本猜不到！</p>
-<p>但是小明岂是无名之辈，他用原始人的直觉知道要做这件事：</p>
-<p>记 $h(x) = x - \ln (x + 1) - 1$，</p>
-<script type="math/tex; mode=display">h'(x) = 1 - \dfrac{1}{x + 1} = \dfrac{x}{x + 1} > 0</script><p>所以 $h(x)$ 在 (0 , +\infty) 单调递增。</p>
-<p>爱思考的小明想到，平时求恒成立的问题我们都要去找出准确根，那么我们能否只知道根的范围，而去解决呢？</p>
-<p>开始尝试：</p>
-<p>既然 $h(x)$ 是单调递增的，那么我们应该能找到零点的大致位置。</p>
-<p>怎么找？</p>
-<p>——一个一个试。</p>
-<p>我们从 $0$ 开始，试啊试，我们发现：</p>
-<p>$h(2) = 1 - \ln 2 &lt; 0,h(3) 2 - \ln 4 &gt; 0$</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数论;数学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/shuxuenote3.2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-pailiejishu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1245,6 +1140,120 @@
 
 
   
+    <article id="post-CSP2019youji" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/17/CSP2019youji/">CSP2019游记</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/17/CSP2019youji/" class="archive-article-date">
+  	<time datetime="2019-11-17T08:18:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Day-1"><a href="#Day-1" class="headerlink" title="Day -1"></a>Day -1</h2><p>晚上疯狂地做水题打高精，<del>可能就是找心理安慰</del></p>
+<h2 id="Day-0"><a href="#Day-0" class="headerlink" title="Day 0"></a>Day 0</h2><p>上午最后一节政治课上的头晕眼花，一放学就赶紧冲了出来，直接奔着合肥去。</p>
+<p>拿完准考证四点半了，直接去试提高组的机子，顺便敲几个模板。打$LCA$的时候yjx大佬过来看，两个人硬是没发现dfs没递归下去，最后算是过了洛谷样例。</p>
+<p>出来的时候居然有点迷失方向，绕着大楼转了一圈才找到大门。</p>
+<h2 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h2><p>来到$S$的考场上。</p>
+<p>看样例文件夹名猜题目，通过我工地英语的水平，看见了$code$，猜是道模拟题，看见了$brackets$，？？？猜不出来，看见$tree$，一定是关于树的题目。</p>
+<p>公布密码，直接打开题目，大致浏览了一下，知道没有一道水题，而且是两道关于树的题，感觉会很难。</p>
+<p>读$T1$，题目好长啊，读了两遍才搞懂意思，感觉是道搜索，看数据$n \le 64 , k \le 2^n$，emmm，这搜索估计不行了，于是开始拿稿纸算，打了$4$行的表，确定应该就是类似二叉树的存储结构，但是对于全部数据$k$太大了，开数组是不行的，但是又没想到怎么搞，就先处理了$80 \%$的数据，顺便自己yy了一个十进制转二进制的方法，还手写了一个快速幂（我太弱了，位运算都老是搞炸）。突然想到正难则反，于是想到递归回去即可。想到数据范围有一个灵性的$95\%$，果然。。$n=64$时$long \ long$爆了，改成$unsigned \ long \ long$，可以了，就没再管。</p>
+<p>$T2$，一直无法成功的把括号匹配和树结合，最终只能硬着头皮敲了一个非正解希望骗一骗分。</p>
+<p>$T3$，题目读懂，但完全没有办法下手，放弃。</p>
+<p>期望得分$100+?+0 = ?$</p>
+<p>中午没睡，看各位大佬都说自己好弱，只能拿$200$多分。。。艹（中日双语）</p>
+<p>下午，fake永动机已基本形成，yjx、zbjh、wwz、我互相膜拜，各种自嘲，令人十分不适。</p>
+<p>一进校门，wc，好多人，比上午多了几倍，跟着队伍往考场走，结果一群人直接跟着大队伍上了四楼，然而考场在三楼。。。</p>
+<p>进入考场，一坐下瞬间就觉得自己老了，四周都是小学生。</p>
+<p>公布密码，开题！</p>
+<p>$T1$，送分。</p>
+<p>$T2$，限制条件略多，感觉不是太好写，因为要遍历队列，所以被迫手写，用了一段时间才过大样例。</p>
+<p>$T3$一点思路都没有，先看$T4$，感觉是一道很难的图论题，但$n$那么大，估计也就是跑一遍搜索的事，再仔细看题目，发现扯了那么多，其实就是跑奇偶最短路，然后就可以$\Theta (1)$判断了。打完还剩$1h30min$</p>
+<p>再看$T3$，还是没思路，无论是上厕所还是吃巧克力，都找不到思路，旁边yjx大佬已经开始快乐的俄罗斯方块。我还是想了一会，$dp$？好像无论如何都有后效性，贪心？没有方法，搜索？炸飞了，而且十分难写。于是只能处理特殊情况骗分。</p>
+<p>期望得分$100+100+25+100=325$，回去看洛谷，哇，$T3$有原题，艹（日语），$400$的大佬比比皆是，瞬间感觉自己特别弱。</p>
+<h2 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h2><p>因为被yjx大佬诅咒摔跤，进校门时被绊了一下，太草了。</p>
+<p>今天已经没有奢望了，于是怀着沉重的心情打开题目。$T1$又是很长的题面，$T2$，$T3$一副不可做的样子。。</p>
+<p>$T1$又是读了两遍才看懂，是道计数，但是有一个除以$2$的要求很恶心，推了一小时搜索乱写完事。</p>
+<p>$T2$，？？？分段系列？？，感觉就是分段3的改版，于是按照分段3的思路写了一个二维$\Theta (n^3)$的$dp$，期望得分$36$，突然发现有一维不需要，于是删掉，期望得分$64$。</p>
+<p>$T3$，算了半天最终打了随机数。</p>
+<p>期望得分$? + 64 + k(k \to 0) = ?$</p>
+<p>回来看$T1$似乎是$dp$，完全不会。$T2$听说是贪心。。不会，$T3$听说是线段树合并，不会。。</p>
+<p>总之，感觉自己初中竞赛生涯非常快的就结束了，高中再重新开始吧。</p>
+<p>文化课，你好。（md作业还没写）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CSP2019</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/杂谈-闲聊//" class="article-tag-list-link color1">杂谈,闲聊</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/17/CSP2019youji/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1764,20 +1773,5 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
