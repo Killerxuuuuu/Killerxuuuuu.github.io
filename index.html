@@ -188,7 +188,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>$LaTeX$ 炸的很厉害，于是大部分公式都拿文字叙述了。</p>
+        <p>$\LaTeX$ 炸的很厉害，于是大部分公式都拿文字叙述了。</p>
 <p><a href="https://codeforces.ml/problemset/problem/1185/D" target="_blank" rel="noopener">题目链接</a></p>
 <p>大致题意就是给定一个数列，问删除一个数并重排能否形成等差数列。</p>
 <p>1700的题目作为D题且在洛谷能上紫（当然，紫确实夸张了）是有原因的：难调</p>
@@ -1765,5 +1765,20 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
