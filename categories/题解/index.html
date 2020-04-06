@@ -751,7 +751,7 @@
 
     
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/categories/题解/page/2/">2</a><a class="page-number" href="/categories/题解/page/3/">3</a><a class="extend next" rel="next" href="/categories/题解/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/categories/题解/page/2/">2</a><a class="page-number" href="/categories/题解/page/3/">3</a><a class="page-number" href="/categories/题解/page/4/">4</a><a class="extend next" rel="next" href="/categories/题解/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1268,5 +1268,20 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
