@@ -168,6 +168,113 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ssdxj" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/02/ssdxj/">洛谷 P3258 [JLOI2014]松鼠的新家  题解</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/02/ssdxj/" class="archive-article-date">
+  	<time datetime="2020-08-02T14:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>就口胡下树上差分。</p>
+<p>随便画一棵树，</p>
+<p><img src="https://s1.ax1x.com/2020/08/02/aYY3AH.png" alt></p>
+<p>每次操作给两个结点之间的路径上所有的结点的值都加上 $w$，求最终每个结点的值。</p>
+<p>显然，树链剖分可做，还不要动脑子（</p>
+<p>这里介绍树上差分的做法。</p>
+<p>已知结点的值为 $A_i$，</p>
+<p>设 $D<em>u = A_u - \sum</em>{v \in son_u} A_v$，</p>
+<p>结论：$A<em>u = \sum</em>{x \in Subtree_u} D_x$.</p>
+<p>证明：因为 $A<em>i = D_i + \sum</em>{j \in son_i} A_j$,</p>
+<p>所以 $A<em>u = D_u + \sum</em>{v \in son<em>u} A_v = D_u + \sum</em>{v \in son<em>u}[D_v +\sum</em>{k \in son_v} A_k] $.</p>
+<p>我们发现这其实就是个套娃，遇到 $\sum<em>{k \in son_v} A_k$ 我们就能给它拆开，直到叶子结点，最终就会得到 $A_u = \sum</em>{x \in Subtree_u} D_x$.</p>
+<p>于是我们的目标变成了维护 $D_i$.</p>
+<p>如上图，现在我们假设把从结点7到结点6的路径上所有的点加上 $w$，</p>
+<p>我们想到给 $A_7 = A_7 + w$,进一步地,$D_7 = D_7 + w$.</p>
+<p>由上面的结论，我们可以发现，$A_5,A_2,A_1$ 全部加上了 $w$.</p>
+<p>那么 $D_6 = D_6 + w$，这样 $A_2,A_1$ 全部加上了 $w$.</p>
+<p>我们发现结点2加了两个 $w$,而实际只需要一个，故 $D_2 = D_2 - w$,</p>
+<p>结点1也加了两个 $w$，而实际一个都不需要，但由于 $D_2$ 减了一个 $w$，所以 $D_1 = D_1 - w$.</p>
+<p>这样就维护完毕了。</p>
+<p>那么我们一般化，上述操作可以描述为 $D<em>x = D_x + w,D_y = D_y + w,D</em>{\operatorname{lca}(x,y)} = D<em>{\operatorname{lca}(x,y)} - w,D</em>{father[\operatorname{lca}(x,y)]} = D_{father[\operatorname{lca}(x,y)]} - w$，</p>
+<p>对于本题，由于一个结点作为起点和终点算了两次，所以算出来的结果除起点外都减去1即可。</p>
+<p><del>似乎并没有放代码的必要。</del></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">差分</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/02/ssdxj/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-zhongkao" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1312,118 +1419,6 @@
 
 
   
-    <article id="post-jiagonglingjian" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/14/jiagonglingjian/">洛谷 P5663 加工零件 题解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/14/jiagonglingjian/" class="archive-article-date">
-  	<time datetime="2019-12-14T10:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>考场看见图论题，稍稍放心了点，毕竟普及组的图论应该不会太难。</p>
-<p>题目说了很多，但我们可以找到一些规律。可以发现，如果一个点有其他点和它连接，那么必然会出现我生产$x$阶段的零件，你生产$x-1$阶段的，我再生产$x-2$阶段的这样一直下去，即假如一个点需要生产第$6$阶段的零件，那第$4,2,0$（即原材料）阶段的材料都要生产。这样，我们设一个点需要生产$X$阶段的零件，我们只需要分别求出$X$的奇数最大值和偶数最大值就可以。</p>
-<p>现在题目要求我们去判断给定一个点需要生产的零件阶段，求$1$号点需不需要生产原材料，那么照着上面的思路我们去找两个最大值，其实就是分别求$1$到这个点的奇数和偶数最短路。实际操作起来就是跑一遍最短路，然后$\Theta(1)$判断就好了。</p>
-<p>考场代码被洛谷的一个数据hack了，原因是那个数据$1$号点没有任何点和它连接，但是代码中直接认为$1$到$1$的偶数最短路是$0$，这样判断就出现错误了。这里修改的方法就是直接判断有没有点和某一个点相连。</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to , next;</span><br><span class="line">&#125;edge[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> head[N] , tot = <span class="number">0</span> , in[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> pos , dis;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">queue</span> &lt; node &gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u , <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	edge[++tot].to = v;</span><br><span class="line">	edge[tot].next = head[u];</span><br><span class="line">	head[u] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n , m , Q;</span><br><span class="line"><span class="keyword">int</span> dis1[N] , dis2[N];</span><br><span class="line"><span class="keyword">bool</span> vis1[N] , vis2[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dis1 , <span class="number">0x3f</span> , <span class="keyword">sizeof</span>(dis1));</span><br><span class="line">	<span class="built_in">memset</span>(dis2 , <span class="number">0x3f</span> , <span class="keyword">sizeof</span>(dis2));</span><br><span class="line">	q.push((node)&#123;<span class="number">1</span> , <span class="number">0</span>&#125;);</span><br><span class="line">	dis2[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		node tmp = q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		<span class="keyword">int</span> x = tmp.pos , d = tmp.dis + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = edge[i].next)&#123;</span><br><span class="line">			<span class="keyword">int</span> v = edge[i].to;</span><br><span class="line">			<span class="keyword">if</span>(d &lt; dis1[v] &amp;&amp; d % <span class="number">2</span> != <span class="number">0</span>)&#123;</span><br><span class="line">				dis1[v] = d;</span><br><span class="line">				q.push((node)&#123;v , d&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(d &lt; dis2[v] &amp;&amp; d % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">				dis2[v] = d;</span><br><span class="line">				q.push((node)&#123;v , d&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">				</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//freopen("work.in" , "r" , stdin);</span></span><br><span class="line">	<span class="comment">//freopen("work.out" , "w" , stdout);</span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; Q;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> u , v;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span> , &amp;u , &amp;v);</span><br><span class="line">		add(u , v); add(v , u);</span><br><span class="line">		in[u] ++;</span><br><span class="line">		in[v] ++;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	bfs();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(Q--)&#123;</span><br><span class="line">		<span class="keyword">int</span> A , L;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span> , &amp;A , &amp;L);</span><br><span class="line">		<span class="keyword">if</span>(in[A] == <span class="number">0</span> &amp;&amp; L != <span class="number">0</span>) &#123; <span class="built_in">printf</span>(<span class="string">"No\n"</span>); <span class="keyword">continue</span>; &#125;</span><br><span class="line">		<span class="keyword">if</span>(L % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(L - dis2[A] &gt;= <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(L - dis1[A] &gt;= <span class="number">0</span>)  <span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	fclose(<span class="built_in">stdin</span>);</span><br><span class="line">	fclose(<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CSP2019</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">NOIp普及组</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">bfs;广度优先搜索</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SPFA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2019</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CSP-J</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/14/jiagonglingjian/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1791,6 +1786,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">考试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
             
             <div class="clearfix"></div>

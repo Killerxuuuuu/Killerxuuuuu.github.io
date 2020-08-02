@@ -6,22 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>洛谷 P3847 [TJOI2007]调整队形 题解 | KillerXu的博客</title>
+  <title>Archives: 2020/8 | KillerXu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="就口胡下树上差分。 随便画一棵树，  每次操作给两个结点之间的路径上所有的结点的值都加上 $w$，求最终每个结点的值。 显然，树链剖分可做，还不要动脑子（ 这里介绍树上差分的做法。 已知结点的值为 $A_i$， 设 $Du = A_u - \sum{v \in son_u} A_v$， 结论：$Au = \sum{x \in Subtree_u} D_x$. 证明：因为 $Ai = D_i + \">
-<meta name="keywords" content="动态规划,各省省选,区间dp,2007,天津">
-<meta property="og:type" content="article">
-<meta property="og:title" content="洛谷 P3847 [TJOI2007]调整队形 题解">
-<meta property="og:url" content="http://yoursite.com/2019/04/23/ssdxj/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="KillerXu的博客">
+<meta property="og:url" content="http://yoursite.com/archives/2020/08/index.html">
 <meta property="og:site_name" content="KillerXu的博客">
-<meta property="og:description" content="就口胡下树上差分。 随便画一棵树，  每次操作给两个结点之间的路径上所有的结点的值都加上 $w$，求最终每个结点的值。 显然，树链剖分可做，还不要动脑子（ 这里介绍树上差分的做法。 已知结点的值为 $A_i$， 设 $Du = A_u - \sum{v \in son_u} A_v$， 结论：$Au = \sum{x \in Subtree_u} D_x$. 证明：因为 $Ai = D_i + \">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s1.ax1x.com/2020/08/02/aYY3AH.png">
-<meta property="og:updated_time" content="2020-08-02T08:54:53.027Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="洛谷 P3847 [TJOI2007]调整队形 题解">
-<meta name="twitter:description" content="就口胡下树上差分。 随便画一棵树，  每次操作给两个结点之间的路径上所有的结点的值都加上 $w$，求最终每个结点的值。 显然，树链剖分可做，还不要动脑子（ 这里介绍树上差分的做法。 已知结点的值为 $A_i$， 设 $Du = A_u - \sum{v \in son_u} A_v$， 结论：$Au = \sum{x \in Subtree_u} D_x$. 证明：因为 $Ai = D_i + \">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/08/02/aYY3AH.png">
+<meta name="twitter:title" content="KillerXu的博客">
   
     <link rel="alternative" href="/atom.xml" title="KillerXu的博客" type="application/atom+xml">
   
@@ -173,111 +166,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ssdxj" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      洛谷 P3847 [TJOI2007]调整队形 题解
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/08/02/ssdxj/" class="archive-article-date">
+  	<time datetime="2020-08-02T14:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-02</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/08/02/ssdxj/">洛谷 P3258 [JLOI2014]松鼠的新家  题解</a>
     </h1>
   
 
-        
-        <a href="/2019/04/23/ssdxj/" class="archive-article-date">
-  	<time datetime="2019-04-23T14:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>就口胡下树上差分。</p>
-<p>随便画一棵树，</p>
-<p><img src="https://s1.ax1x.com/2020/08/02/aYY3AH.png" alt></p>
-<p>每次操作给两个结点之间的路径上所有的结点的值都加上 $w$，求最终每个结点的值。</p>
-<p>显然，树链剖分可做，还不要动脑子（</p>
-<p>这里介绍树上差分的做法。</p>
-<p>已知结点的值为 $A_i$，</p>
-<p>设 $D<em>u = A_u - \sum</em>{v \in son_u} A_v$，</p>
-<p>结论：$A<em>u = \sum</em>{x \in Subtree_u} D_x$.</p>
-<p>证明：因为 $A<em>i = D_i + \sum</em>{j \in son_i} A_j$,</p>
-<p>所以 $A<em>u = D_u + \sum</em>{v \in son<em>u} A_v = D_u + \sum</em>{v \in son<em>u}[D_v +\sum</em>{k \in son_v} A_k] $.</p>
-<p>我们发现这其实就是个套娃，遇到 $\sum<em>{k \in son_v} A_k$ 我们就能给它拆开，直到叶子结点，最终就会得到 $A_u = \sum</em>{x \in Subtree_u} D_x$.</p>
-<p>于是我们的目标变成了维护 $D_i$.</p>
-<p>如上图，现在我们假设把从结点7到结点6的路径上所有的点加上 $w$，</p>
-<p>我们想到给 $A_7 = A_7 + w$,进一步地,$D_7 = D_7 + w$.</p>
-<p>由上面的结论，我们可以发现，$A_5,A_2,A_1$ 全部加上了 $w$.</p>
-<p>那么 $D_6 = D_6 + w$，这样 $A_2,A_1$ 全部加上了 $w$.</p>
-<p>我们发现结点2加了两个 $w$,而实际只需要一个，故 $D_2 = D_2 - w$,</p>
-<p>结点1也加了两个 $w$，而实际一个都不需要，但由于 $D_2$ 减了一个 $w$，所以 $D_1 = D_1 - w$.</p>
-<p>这样就维护完毕了。</p>
-<p>那么我们一般化，上述操作可以描述为 $D<em>x = D_x + w,D_y = D_y + w,D</em>{\operatorname{lca}(x,y)} = D<em>{\operatorname{lca}(x,y)} - w,D</em>{father[\operatorname{lca}(x,y)]} = D_{father[\operatorname{lca}(x,y)]} - w$，</p>
-<p>对于本题，由于一个结点作为起点和终点算了两次，所以算出来的结果除起点外都减去1即可。</p>
-<p><del>似乎并没有放代码的必要。</del></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://s2.ax1x.com/2019/03/16/AVbXO1.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">各省省选</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">区间dp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2007</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">天津</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">差分</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -290,167 +220,17 @@
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/23/ssdxj/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/04/23/tiaozhengduixing/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          洛谷 P3847 [TJOI2007]调整队形 题解
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/04/20/wuliaodeshulie/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">洛谷 P1438 无聊的数列 代码</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    目录，不存在的…
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="ssdxj" data-title="洛谷 P3847 [TJOI2007]调整队形 题解" data-url="http://yoursite.com/2019/04/23/ssdxj/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://yoursite.com/2019/04/23/ssdxj/", 
-    sourceId: "ssdxj",
-    productKey: "true",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    </div></section>
   
 
-  
-  <div id="SOHUCS" sid="ssdxj"></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "true",
-        conf: "true"
-    });
-</script>
-
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -473,8 +253,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -813,6 +593,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">考试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
             
             <div class="clearfix"></div>
